@@ -3,44 +3,42 @@
 <header 
     x-data="{ mobileMenuOpen: false, scrolled: false }" 
     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 15 })"
-    :class="scrolled ? 'bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md shadow-sm border-sky-100 dark:border-zinc-800' : 'bg-transparent border-transparent'"
+    :class="scrolled ? 'bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-sm border-sky-100 dark:border-zinc-800' : 'bg-transparent border-transparent'"
     class="sticky top-0 z-50 transition-all duration-300 border-b w-full"
 >
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 sm:h-20">
             
-            <!-- Left: FP Logo / Profile & Quick Add -->
-            <div class="flex items-center gap-2">
-                <a href="#" class="flex items-center justify-center w-10 h-10 rounded-2xl bg-slate-800 dark:bg-zinc-800 hover:bg-slate-900 text-white font-bold text-sm shadow-sm transition hover:scale-105" title="Farhan Pratama Profile">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                </a>
-                <a href="#contact" class="flex items-center justify-center w-10 h-10 rounded-2xl bg-sky-200 dark:bg-sky-900/60 hover:bg-sky-300 dark:hover:bg-sky-800 text-sky-800 dark:text-sky-200 font-bold transition hover:scale-105" title="Quick Action">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-                    </svg>
-                </a>
-            </div>
+            <!-- Logo & Brand Badge -->
+            <a href="#" class="group flex items-center gap-2.5 transition">
+                <span class="flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-600 text-white font-extrabold text-sm shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
+                    FP
+                </span>
+                <div class="flex flex-col">
+                    <span class="text-base font-extrabold text-slate-800 dark:text-white leading-tight group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                        Farhan Pratama
+                    </span>
+                    <span class="text-[11px] font-bold text-sky-600 dark:text-sky-400 tracking-wider uppercase">
+                        Web Developer
+                    </span>
+                </div>
+            </a>
 
-            <!-- Center: Navigation Links with Active Pill Indicator -->
-            <nav class="hidden md:flex items-center gap-1 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-sky-100 dark:border-zinc-800 shadow-sm">
+            <!-- Desktop Nav Pill Links -->
+            <nav class="hidden md:flex items-center gap-1 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-sky-100 dark:border-zinc-800 shadow-sm">
                 @foreach ($portfolio['nav'] as $item)
                     <a 
                         href="{{ $item['url'] }}" 
-                        class="relative px-4 py-1.5 text-sm font-bold transition-all duration-200 {{ $item['active'] ? 'text-sky-600 dark:text-sky-400' : 'text-slate-600 dark:text-zinc-300 hover:text-sky-600 dark:hover:text-sky-400' }}"
+                        class="px-4 py-1.5 rounded-full text-xs font-bold text-slate-600 dark:text-zinc-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-zinc-800 transition-all duration-200"
                     >
-                        <span>{{ $item['label'] }}</span>
-                        @if($item['active'])
-                            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-sky-500 rounded-full"></span>
-                        @endif
+                        {{ $item['label'] }}
                     </a>
                 @endforeach
             </nav>
 
-            <!-- Right: Action Buttons & Dark Mode -->
-            <div class="flex items-center gap-2 sm:gap-3">
-                <!-- Dark Mode Toggle Button -->
+            <!-- Actions: Theme Toggle & Contact Button -->
+            <div class="flex items-center gap-2.5">
+                <!-- Theme Switcher -->
                 <button 
                     @click="$store.darkMode.toggle()"
                     type="button" 
@@ -55,10 +53,10 @@
                     </svg>
                 </button>
 
-                <!-- Action Capsule Button -->
+                <!-- Action CTA Pill -->
                 <a 
                     href="#contact" 
-                    class="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-slate-800 hover:bg-slate-900 dark:bg-sky-600 dark:hover:bg-sky-700 text-white font-bold text-xs tracking-wide shadow-sm hover:shadow transition hover:-translate-y-0.5"
+                    class="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-xs shadow-md shadow-sky-500/20 transition hover:-translate-y-0.5"
                 >
                     <span>Hubungi</span>
                 </a>
