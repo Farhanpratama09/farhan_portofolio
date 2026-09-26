@@ -1,29 +1,118 @@
 @props(['portfolio'])
 
-<section id="projects" class="py-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<section 
+    id="projects" 
+    x-data="{
+        selectedCategory: 'all',
+        viewMode: 'slider', // 'slider' or 'grid'
+        scrollLeft() {
+            this.$refs.carousel.scrollBy({ left: -380, behavior: 'smooth' });
+        },
+        scrollRight() {
+            this.$refs.carousel.scrollBy({ left: 380, behavior: 'smooth' });
+        }
+    }"
+    class="py-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20"
+>
     
-    <!-- Section Header (Artwork / Works > style) -->
-    <div class="flex items-center justify-between mb-6">
-        <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-pulse"></span>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800 dark:text-white tracking-tight">
-                Featured Projects
-            </h2>
+    <!-- Section Header & Controls -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div>
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-500 lamp-indicator animate-pulse"></span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800 dark:text-white tracking-tight">
+                    Projects Showcase
+                </h2>
+                <span class="px-2.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 font-extrabold text-[11px]">
+                    {{ count($portfolio['projects']) }} Karya
+                </span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-zinc-400 mt-1">
+                Geser ke samping atau gunakan filter kategori untuk menjelajah seluruh proyek.
+            </p>
         </div>
-        <a href="#contact" class="inline-flex items-center gap-1 text-xs font-extrabold text-sky-600 dark:text-sky-400 hover:text-sky-700 transition">
-            <span>Diskusikan Kolaborasi</span>
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-        </a>
+
+        <!-- Controls: Category Filter & Carousel Nav -->
+        <div class="flex items-center gap-2">
+            <!-- Grid / Slider View Switcher -->
+            <button 
+                type="button" 
+                @click="viewMode = viewMode === 'slider' ? 'grid' : 'slider'"
+                class="px-3 py-1.5 rounded-full bg-white dark:bg-zinc-900 border border-sky-100 dark:border-zinc-800 text-slate-700 dark:text-zinc-200 text-xs font-bold shadow-sm hover:bg-sky-50 dark:hover:bg-zinc-800 transition flex items-center gap-1.5 cursor-pointer"
+                :title="viewMode === 'slider' ? 'Ubah ke Mode Grid' : 'Ubah ke Mode Slider'"
+            >
+                <span x-text="viewMode === 'slider' ? '⊞ Grid' : '⟷ Slider'"></span>
+            </button>
+
+            <!-- Carousel Navigation Arrows (Enabled in slider mode) -->
+            <div x-show="viewMode === 'slider'" class="flex items-center gap-1.5">
+                <button 
+                    @click="scrollLeft()"
+                    type="button" 
+                    aria-label="Scroll Left"
+                    class="w-8 h-8 rounded-full bg-white dark:bg-zinc-900 border border-sky-100 dark:border-zinc-800 text-slate-700 dark:text-zinc-200 hover:bg-sky-500 hover:text-white hover:border-sky-500 shadow-sm flex items-center justify-center transition hover:scale-110 cursor-pointer"
+                >
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button 
+                    @click="scrollRight()"
+                    type="button" 
+                    aria-label="Scroll Right"
+                    class="w-8 h-8 rounded-full bg-white dark:bg-zinc-900 border border-sky-100 dark:border-zinc-800 text-slate-700 dark:text-zinc-200 hover:bg-sky-500 hover:text-white hover:border-sky-500 shadow-sm flex items-center justify-center transition hover:scale-110 cursor-pointer"
+                >
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- 3 Dynamic Project Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Category Filter Pills -->
+    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 mb-4">
+        <button 
+            @click="selectedCategory = 'all'"
+            :class="selectedCategory === 'all' ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25' : 'bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-300 border border-sky-100 dark:border-zinc-800 hover:bg-sky-50'"
+            class="px-3.5 py-1 rounded-full text-xs font-bold transition whitespace-nowrap cursor-pointer"
+        >
+            Semua Proyek
+        </button>
+        <button 
+            @click="selectedCategory = 'System Information'"
+            :class="selectedCategory === 'System Information' ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25' : 'bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-300 border border-sky-100 dark:border-zinc-800 hover:bg-sky-50'"
+            class="px-3.5 py-1 rounded-full text-xs font-bold transition whitespace-nowrap cursor-pointer"
+        >
+            Sistem Informasi
+        </button>
+        <button 
+            @click="selectedCategory = 'AI & Web Service'"
+            :class="selectedCategory === 'AI & Web Service' ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25' : 'bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-300 border border-sky-100 dark:border-zinc-800 hover:bg-sky-50'"
+            class="px-3.5 py-1 rounded-full text-xs font-bold transition whitespace-nowrap cursor-pointer"
+        >
+            AI & Smart Tools
+        </button>
+        <button 
+            @click="selectedCategory = 'Frontend & Dashboard'"
+            :class="selectedCategory === 'Frontend & Dashboard' ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25' : 'bg-white dark:bg-zinc-900 text-slate-600 dark:text-zinc-300 border border-sky-100 dark:border-zinc-800 hover:bg-sky-50'"
+            class="px-3.5 py-1 rounded-full text-xs font-bold transition whitespace-nowrap cursor-pointer"
+        >
+            Dashboard UI
+        </button>
+    </div>
+
+    <!-- Scalable Projects Container: Seamless Slider & Grid Support -->
+    <div 
+        x-ref="carousel"
+        :class="viewMode === 'slider' ? 'flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 scroll-smooth' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'"
+    >
         @foreach ($portfolio['projects'] as $project)
-            <article class="relative flex flex-col justify-between rounded-3xl bg-gradient-to-b {{ $project['gradient'] }} p-6 text-white shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 border border-white/15 group overflow-hidden">
-                
-                <!-- Ambient Top Particle Indicator -->
+            <article 
+                x-show="selectedCategory === 'all' || selectedCategory === '{{ $project['category'] }}'"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                :class="viewMode === 'slider' ? 'min-w-[300px] sm:min-w-[340px] md:min-w-[360px] snap-start' : 'w-full'"
+                class="relative flex flex-col justify-between rounded-3xl bg-gradient-to-b {{ $project['gradient'] }} p-6 text-white shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-white/15 group overflow-hidden"
+            >
+                <!-- Ambient Top Star Particle -->
                 <div class="absolute top-3 right-4 text-white/20 text-xl font-bold select-none group-hover:scale-125 transition-transform">✦</div>
                 <div class="absolute -bottom-10 -right-10 w-36 h-36 bg-sky-400/20 rounded-full blur-2xl pointer-events-none"></div>
 
@@ -37,15 +126,15 @@
                         {{ $project['title'] }}
                     </h3>
 
-                    <p class="text-xs text-sky-100/85 leading-relaxed">
+                    <p class="text-xs text-sky-100/85 leading-relaxed line-clamp-3">
                         {{ $project['description'] }}
                     </p>
                 </div>
 
                 <!-- Middle: Tech Badges -->
-                <div class="relative z-10 my-4 flex flex-wrap gap-1.5">
+                <div class="relative z-10 my-5 flex flex-wrap gap-1.5">
                     @foreach ($project['tags'] as $tag)
-                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-black/25 backdrop-blur-sm text-sky-200 border border-white/10">
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-black/30 backdrop-blur-sm text-sky-200 border border-white/10">
                             {{ $tag }}
                         </span>
                     @endforeach

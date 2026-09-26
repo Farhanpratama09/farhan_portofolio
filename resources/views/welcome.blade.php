@@ -1,18 +1,21 @@
 <x-layout :portfolio="$portfolio">
-    <!-- Top Floating Navbar -->
+    <!-- Top Floating Navbar with Active Glowing Lamp Indicator -->
     <x-navbar :portfolio="$portfolio" />
 
     <main class="flex-1 space-y-6 sm:space-y-8 pb-12">
-        <!-- 1. Hero Banner Showcase -->
+        <!-- 1. Hero Showcase Banner -->
         <x-hero :portfolio="$portfolio" />
 
-        <!-- 2. Featured Projects Gallery -->
+        <!-- 2. Scalable Projects Showcase Gallery (Horizontal Slider + Grid Toggle) -->
         <x-projects :portfolio="$portfolio" />
 
-        <!-- 3. Interactive Dashboard Widgets (Lofi Dev Beats & Core Capabilities) -->
+        <!-- 3. Dedicated About & Engineering Philosophy Section -->
+        <x-about :portfolio="$portfolio" />
+
+        <!-- 4. Interactive Live Dashboard (Spinning Vinyl Lofi Player & Floating Stickers) -->
         <x-dashboard-widgets :portfolio="$portfolio" />
 
-        <!-- 4. Contact & Direct Connection -->
+        <!-- 5. Contact Section -->
         <x-contact :portfolio="$portfolio" />
     </main>
 

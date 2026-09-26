@@ -27,7 +27,7 @@
                 <!-- Top Tag -->
                 <div class="flex items-center gap-2">
                     <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-extrabold tracking-wider border border-white/30">
-                        <span class="text-amber-300">✦</span> {{ $portfolio['subtitle'] }}
+                        <span class="text-amber-300">✦</span> {{ $portfolio['subtitle'] ?? $portfolio['role'] }}
                     </span>
                 </div>
 
