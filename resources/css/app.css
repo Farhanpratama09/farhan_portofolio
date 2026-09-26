@@ -7,10 +7,24 @@
 @source '../views/**/*.blade.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-rounded: 'M PLUS Rounded 1c', 'Quicksand', system-ui, -apple-system, sans-serif;
+    --font-sans: 'M PLUS Rounded 1c', 'Quicksand', system-ui, -apple-system, sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
+    font-family: 'M PLUS Rounded 1c', 'Quicksand', sans-serif;
+}
+
+/* Custom Soft Glow and Anime Dashboard Shadows */
+.anime-shadow {
+    box-shadow: 0 10px 30px -5px rgba(2, 132, 199, 0.12), 0 4px 12px -2px rgba(2, 132, 199, 0.08);
+}
+
+.anime-shadow-sm {
+    box-shadow: 0 4px 16px -2px rgba(2, 132, 199, 0.08);
+}
+
+.anime-card-border {
+    border: 1.5px solid #e0f2fe;
 }

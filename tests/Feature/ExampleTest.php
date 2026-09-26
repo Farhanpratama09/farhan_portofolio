@@ -7,18 +7,20 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * Test that the portfolio single page returns a successful 200 response
-     * and contains the essential branding and section elements.
+     * Test that the anime dashboard portfolio page renders successfully
+     * and contains all key components (Hero, Projects, Tech Stack, Info Cards, Contact).
      */
-    public function test_portfolio_page_loads_successfully_with_data(): void
+    public function test_anime_dashboard_portfolio_loads_successfully(): void
     {
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('Farhan Pratama');
-        $response->assertSee('Web Developer & AI Enthusiast');
-        $response->assertSee('Core Web & Backend');
-        $response->assertSee('Portfolio Showcase');
-        $response->assertSee('Kontak');
+        $response->assertSeeText('Farhan Pratama');
+        $response->assertSeeText('Web Developer');
+        $response->assertSeeText('Aplikasi Monev Kinerja Guru');
+        $response->assertSeeText('Recent Tech Stack');
+        $response->assertSeeText('Laravel Framework');
+        $response->assertSeeText('Full-Stack Development');
+        $response->assertSeeText('Mari Terhubung & Berdiskusi');
     }
 }

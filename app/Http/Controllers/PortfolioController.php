@@ -13,6 +13,6 @@ class PortfolioController extends Controller
     {
         $portfolio = config('portfolio');
 
-        return view('portfolio', compact('portfolio'));
+        return view('welcome', compact('portfolio'));
     }
 }
