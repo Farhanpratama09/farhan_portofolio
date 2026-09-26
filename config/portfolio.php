@@ -3,14 +3,12 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Personal Profile
+    | Data Pribadi & Profil
     |--------------------------------------------------------------------------
     */
     'name' => 'Farhan Pratama',
     'role' => 'Web Developer',
-    'subtitle' => 'Full-Stack Web & System Enthusiast',
-    'japanese_role' => 'ウェブ開発者',
-    'tagline' => 'Mengembangkan aplikasi web modern, efisien, dan terstruktur. Berfokus pada perancangan sistem informasi, clean architecture, dan implementasi teknologi digital.',
+    'tagline' => 'Saya fokus mengembangkan aplikasi web dengan Laravel dan Tailwind CSS, mulai dari perancangan sistem, database, hingga antarmuka pengguna yang nyaman digunakan.',
     'email' => 'fahranpratama@gmail.com',
     'whatsapp' => 'https://wa.me/6281234567890',
     'github' => 'https://github.com/farhanpratama',
@@ -18,69 +16,69 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Navigation Links (Synced with on-page section IDs)
+    | Menu Navigasi
     |--------------------------------------------------------------------------
     */
     'nav' => [
         ['id' => 'hero', 'label' => 'Home', 'url' => '#hero'],
-        ['id' => 'projects', 'label' => 'Projects', 'url' => '#projects'],
-        ['id' => 'about', 'label' => 'About', 'url' => '#about'],
-        ['id' => 'dashboard', 'label' => 'Dashboard', 'url' => '#dashboard'],
-        ['id' => 'contact', 'label' => 'Contact', 'url' => '#contact'],
+        ['id' => 'projects', 'label' => 'Proyek', 'url' => '#projects'],
+        ['id' => 'about', 'label' => 'Tentang', 'url' => '#about'],
+        ['id' => 'dashboard', 'label' => 'Aktivitas', 'url' => '#dashboard'],
+        ['id' => 'contact', 'label' => 'Kontak', 'url' => '#contact'],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Featured Projects (Scalable Gallery - Works seamlessly with 3+ projects)
+    | Daftar Proyek
     |--------------------------------------------------------------------------
     */
     'projects' => [
         [
             'id' => 'monev-bars',
             'title' => 'Aplikasi Monev Kinerja Guru',
-            'category' => 'System Information',
+            'category' => 'Sistem Informasi',
             'tags' => ['Laravel 13', 'MySQL', 'Metode BARS'],
-            'description' => 'Sistem monitoring dan evaluasi kinerja tenaga pendidik terintegrasi menggunakan kalkulasi metode Behaviorally Anchored Rating Scale.',
+            'description' => 'Aplikasi evaluasi dan monitoring kinerja guru berbasis web dengan implementasi metode Behaviorally Anchored Rating Scale (BARS).',
             'gradient' => 'from-sky-600 via-indigo-700 to-slate-900',
             'github' => 'https://github.com/farhanpratama',
             'demo' => '#',
         ],
         [
             'id' => 'ai-analyzer',
-            'title' => 'AI Smart Document Analyzer',
-            'category' => 'AI & Web Service',
+            'title' => 'AI Document Analyzer',
+            'category' => 'Web App & AI',
             'tags' => ['Laravel', 'OpenAI API', 'Alpine.js'],
-            'description' => 'Platform ekstraksi teks dan analisis konten dokumen secara cerdas dengan integrasi LLM untuk percepatan telaah data.',
+            'description' => 'Aplikasi pembaca dan perangkum dokumen otomatis dengan integrasi AI API untuk mempermudah analisis teks panjang.',
             'gradient' => 'from-cyan-600 via-sky-700 to-indigo-950',
             'github' => 'https://github.com/farhanpratama',
             'demo' => '#',
         ],
         [
             'id' => 'portfolio-v1',
-            'title' => 'Personal Portfolio Space v1.0',
-            'category' => 'Frontend & Dashboard',
+            'title' => 'Website Portofolio Farhan',
+            'category' => 'Frontend & Web',
             'tags' => ['Laravel 13', 'Tailwind CSS', 'Alpine.js'],
-            'description' => 'Website portofolio interaktif berarsitektur modern dengan estetika soft anime/gaming dashboard dan dark mode persistence.',
+            'description' => 'Website portofolio pribadi bertema soft dashboard dengan mode gelap/terang dan arsitektur komponen Blade yang rapi.',
             'gradient' => 'from-indigo-600 via-sky-600 to-slate-900',
             'github' => 'https://github.com/farhanpratama/webprofile-app',
             'demo' => '#',
         ],
         [
             'id' => 'inventory-system',
-            'title' => 'Inventory & POS Management',
-            'category' => 'Enterprise System',
-            'tags' => ['Laravel', 'MySQL', 'Livewire', 'Chart.js'],
-            'description' => 'Sistem inventaris terpadu dengan pelacakan stok real-time, laporan transaksi otomatis, dan analisis performa penjualan.',
+            'title' => 'Sistem Manajemen Inventaris',
+            'category' => 'Aplikasi Web',
+            'tags' => ['Laravel', 'MySQL', 'Tailwind CSS'],
+            'description' => 'Sistem pencatatan barang dan transaksi dengan fitur rekapitulasi data otomatis serta laporan terstruktur.',
             'gradient' => 'from-blue-600 via-indigo-800 to-zinc-950',
             'github' => 'https://github.com/farhanpratama',
             'demo' => '#',
         ],
         [
-            'id' => 'e-learning-portal',
-            'title' => 'E-Learning & Examination Hub',
-            'category' => 'Education Platform',
+            'id' => 'elearning-portal',
+            'title' => 'Portal Ujian & Pembelajaran',
+            'category' => 'Platform Edukasi',
             'tags' => ['Laravel', 'Tailwind CSS', 'Alpine.js'],
-            'description' => 'Portal pembelajaran daring interaktif dengan fitur bank soal otomatis, ujian berbasis komputer (CBT), dan rekapitulasi nilai instan.',
+            'description' => 'Platform pembelajaran dan ujian online interaktif dengan bank soal serta penilaian hasil tes secara instan.',
             'gradient' => 'from-sky-700 via-blue-900 to-slate-950',
             'github' => 'https://github.com/farhanpratama',
             'demo' => '#',
@@ -89,46 +87,46 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | About Me Details
+    | Tentang Saya & Fokus
     |--------------------------------------------------------------------------
     */
     'about' => [
-        'heading' => 'Perancangan Sistem & Rekayasa Perangkat Lunak',
-        'subheading' => 'Software Engineering & System Information',
-        'bio' => 'Saya adalah seorang Web Developer dengan ketertarikan mendalam dalam membangun aplikasi web yang terstruktur, efisien, dan berorientasi pada kepuasan pengguna. Saya berfokus pada arsitektur backend Laravel, perancangan skema database MySQL, serta pembuatan antarmuka responsif.',
+        'title' => 'Tentang Saya',
+        'subtitle' => 'Pengembangan Web & Sistem Informasi',
+        'bio' => 'Halo! Saya Farhan Pratama, seorang Web Developer yang menyukai pembuatan aplikasi web yang rapi, mudah digunakan, dan terstruktur. Terbiasa bekerja dengan ekosistem PHP/Laravel untuk backend serta Tailwind CSS untuk membangun tampilan antarmuka yang modern dan responsif.',
         'pillars' => [
             [
-                'emoji' => '🏛️',
-                'title' => 'Clean Architecture',
-                'desc' => 'Struktur kode modular berbasis pola MVC, mudah dirawat dan dikembangkan.',
+                'emoji' => '💻',
+                'title' => 'Backend & Database',
+                'desc' => 'Pengembangan logika aplikasi dengan Laravel serta perancangan database MySQL.',
             ],
             [
-                'emoji' => '📊',
-                'title' => 'System Evaluation',
-                'desc' => 'Implementasi metode analitis dan komputasi data terstruktur untuk keputusan akurat.',
+                'emoji' => '🎨',
+                'title' => 'Tampilan Responsif',
+                'desc' => 'Penyusunan UI yang rapi di berbagai ukuran layar dengan Tailwind CSS dan Alpine.js.',
             ],
             [
-                'emoji' => '⚡',
-                'title' => 'Modern UX & Speed',
-                'desc' => 'Desain antarmuka responsif dan performa tinggi dengan Tailwind CSS & Alpine.js.',
+                'emoji' => '📂',
+                'title' => 'Struktur Kode Rapi',
+                'desc' => 'Penulisan kode yang modular dan teratur agar mudah dikembangkan ke depannya.',
             ],
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Lofi Beats / Music Widget Playlist
+    | Pemutar Musik Sederhana
     |--------------------------------------------------------------------------
     */
     'music' => [
-        'title' => 'Midnight Coding Symphony',
-        'artist' => 'Lofi Chill • Farhan Dev Space',
-        'bpm' => '84 BPM',
+        'title' => 'Lofi Coding Session',
+        'artist' => 'Farhan Playlist',
+        'bpm' => 'Santai & Fokus',
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Contact Configuration
+    | Kontak
     |--------------------------------------------------------------------------
     */
     'contact' => [

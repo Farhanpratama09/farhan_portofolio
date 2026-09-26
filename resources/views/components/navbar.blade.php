@@ -8,14 +8,13 @@
         sections: ['hero', 'projects', 'about', 'dashboard', 'contact'],
         init() {
             window.addEventListener('scroll', () => { 
-                this.scrolled = window.scrollY > 20;
+                this.scrolled = window.scrollY > 15;
                 
-                // Intersection Observer / Scroll Spy
                 for (let section of this.sections) {
                     let el = document.getElementById(section);
                     if (el) {
                         let rect = el.getBoundingClientRect();
-                        if (rect.top <= 200 && rect.bottom >= 150) {
+                        if (rect.top <= 220 && rect.bottom >= 120) {
                             this.activeSection = section;
                             break;
                         }
@@ -24,13 +23,13 @@
             });
         }
     }" 
-    :class="scrolled ? 'bg-white/85 dark:bg-zinc-950/85 backdrop-blur-md shadow-sm border-sky-100 dark:border-zinc-800' : 'bg-transparent border-transparent'"
+    :class="scrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm border-sky-100 dark:border-zinc-800' : 'bg-transparent border-transparent'"
     class="sticky top-0 z-50 transition-all duration-300 border-b w-full"
 >
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 sm:h-20">
             
-            <!-- Logo & Brand Badge -->
+            <!-- Logo & Brand -->
             <a href="#hero" @click="activeSection = 'hero'" class="group flex items-center gap-2.5 transition">
                 <span class="flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-400 to-indigo-600 text-white font-extrabold text-sm shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
                     FP
@@ -39,37 +38,28 @@
                     <span class="text-base font-extrabold text-slate-800 dark:text-white leading-tight group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
                         Farhan Pratama
                     </span>
-                    <span class="text-[10px] font-bold text-sky-600 dark:text-sky-400 tracking-wider uppercase">
-                        {{ $portfolio['japanese_role'] }}
+                    <span class="text-[11px] font-bold text-sky-600 dark:text-sky-400">
+                        Web Developer
                     </span>
                 </div>
             </a>
 
-            <!-- Desktop Nav Pill Links with Glowing Lamp Indicator -->
-            <nav class="hidden md:flex items-center gap-1.5 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-sky-100 dark:border-zinc-800 shadow-sm">
+            <!-- Desktop Nav Links (Clean without any dot/bullet badge) -->
+            <nav class="hidden md:flex items-center gap-1 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md p-1.5 rounded-full border border-sky-100 dark:border-zinc-800 shadow-sm">
                 @foreach ($portfolio['nav'] as $item)
                     <a 
                         href="{{ $item['url'] }}" 
                         @click="activeSection = '{{ $item['id'] }}'"
-                        :class="activeSection === '{{ $item['id'] }}' ? 'bg-sky-100/90 dark:bg-sky-950/90 text-sky-600 dark:text-sky-300 shadow-inner' : 'text-slate-600 dark:text-zinc-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50/70 dark:hover:bg-zinc-800/60'"
-                        class="relative flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer"
+                        :class="activeSection === '{{ $item['id'] }}' ? 'bg-sky-500 text-white shadow-sm shadow-sky-500/25 font-bold' : 'text-slate-600 dark:text-zinc-300 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-zinc-800'"
+                        class="px-4 py-1.5 rounded-full text-xs transition-all duration-200 cursor-pointer"
                     >
-                        <!-- Glowing Lamp Light Indicator (Lampu Penanda Halaman) -->
-                        <span 
-                            x-show="activeSection === '{{ $item['id'] }}'" 
-                            x-transition:enter="transition ease-out duration-300"
-                            x-transition:enter-start="opacity-0 scale-50"
-                            x-transition:enter-end="opacity-100 scale-100"
-                            class="w-2 h-2 rounded-full bg-sky-500 lamp-indicator animate-pulse shrink-0"
-                        ></span>
-
-                        <span>{{ $item['label'] }}</span>
+                        {{ $item['label'] }}
                     </a>
                 @endforeach
             </nav>
 
-            <!-- Actions: Theme Toggle & Quick Action -->
-            <div class="flex items-center gap-2.5">
+            <!-- Actions: Theme Switcher & Contact Button -->
+            <div class="flex items-center gap-2 sm:gap-3">
                 <!-- Theme Switcher -->
                 <button 
                     @click="$store.darkMode.toggle()"
@@ -88,7 +78,7 @@
                 <!-- Action CTA Pill -->
                 <a 
                     href="#contact" 
-                    class="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-xs shadow-md shadow-sky-500/20 transition hover:-translate-y-0.5"
+                    class="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-slate-800 hover:bg-slate-900 dark:bg-sky-600 dark:hover:bg-sky-700 text-white font-bold text-xs tracking-wide shadow-sm hover:shadow transition hover:-translate-y-0.5"
                 >
                     <span>Hubungi</span>
                 </a>
@@ -129,11 +119,10 @@
             <a 
                 href="{{ $item['url'] }}" 
                 @click="mobileMenuOpen = false; activeSection = '{{ $item['id'] }}'"
-                :class="activeSection === '{{ $item['id'] }}' ? 'bg-sky-50 dark:bg-zinc-800 text-sky-600 dark:text-sky-400 font-extrabold' : 'text-slate-700 dark:text-zinc-200'"
-                class="flex items-center justify-between px-4 py-2.5 rounded-2xl text-sm font-bold hover:bg-sky-50 dark:hover:bg-zinc-800 hover:text-sky-600 transition"
+                :class="activeSection === '{{ $item['id'] }}' ? 'bg-sky-500 text-white font-bold' : 'text-slate-700 dark:text-zinc-200 hover:bg-sky-50 dark:hover:bg-zinc-800'"
+                class="block px-4 py-2.5 rounded-2xl text-sm transition"
             >
-                <span>{{ $item['label'] }}</span>
-                <span x-show="activeSection === '{{ $item['id'] }}'" class="w-2 h-2 rounded-full bg-sky-500 lamp-indicator"></span>
+                {{ $item['label'] }}
             </a>
         @endforeach
     </div>
