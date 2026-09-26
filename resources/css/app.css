@@ -16,7 +16,7 @@ html {
     font-family: 'M PLUS Rounded 1c', 'Quicksand', sans-serif;
 }
 
-/* Custom Floating & Glowing Animations */
+/* Custom Floating & Star Motion Animations */
 @keyframes float {
     0%, 100% {
         transform: translateY(0px);
@@ -35,15 +35,75 @@ html {
     }
 }
 
-@keyframes pulse-glow {
+/* Moving & Twinkling Stars Animations */
+@keyframes star-twinkle-1 {
     0%, 100% {
-        opacity: 1;
-        filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+        transform: translate(0px, 0px) scale(0.8) rotate(0deg);
+        opacity: 0.35;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
     }
     50% {
-        opacity: 0.6;
-        filter: drop-shadow(0 0 16px rgba(56, 189, 248, 1));
+        transform: translate(18px, -22px) scale(1.3) rotate(45deg);
+        opacity: 0.95;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
     }
+}
+
+@keyframes star-twinkle-2 {
+    0%, 100% {
+        transform: translate(0px, 0px) scale(1.1) rotate(0deg);
+        opacity: 0.8;
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    }
+    50% {
+        transform: translate(-20px, 18px) scale(0.65) rotate(-45deg);
+        opacity: 0.25;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+    }
+}
+
+@keyframes star-twinkle-3 {
+    0%, 100% {
+        transform: translate(0px, 0px) scale(0.9) rotate(0deg);
+        opacity: 0.4;
+    }
+    33% {
+        transform: translate(15px, 15px) scale(1.25) rotate(30deg);
+        opacity: 0.9;
+        filter: drop-shadow(0 0 12px rgba(254, 240, 138, 0.9));
+    }
+    66% {
+        transform: translate(-12px, 25px) scale(0.75) rotate(-20deg);
+        opacity: 0.5;
+    }
+}
+
+@keyframes star-twinkle-4 {
+    0%, 100% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-16px, -20px) scale(1.4) rotate(60deg);
+        opacity: 1;
+        filter: drop-shadow(0 0 14px rgba(255, 255, 255, 1));
+    }
+}
+
+.animate-star-1 {
+    animation: star-twinkle-1 4.5s ease-in-out infinite;
+}
+
+.animate-star-2 {
+    animation: star-twinkle-2 5.5s ease-in-out infinite;
+}
+
+.animate-star-3 {
+    animation: star-twinkle-3 6.5s ease-in-out infinite;
+}
+
+.animate-star-4 {
+    animation: star-twinkle-4 4s ease-in-out infinite;
 }
 
 .animate-float {
@@ -52,15 +112,6 @@ html {
 
 .animate-float-slow {
     animation: float-slow 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Glowing Lamp Indicator */
-.lamp-indicator {
-    box-shadow: 0 0 12px 2px rgba(56, 189, 248, 0.9), 0 0 20px 4px rgba(2, 132, 199, 0.4);
 }
 
 /* Hide Scrollbar for Horizontal Carousel */

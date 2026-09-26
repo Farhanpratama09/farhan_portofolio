@@ -5,13 +5,28 @@
     <!-- Main Banner Card -->
     <div class="relative w-full rounded-3xl bg-gradient-to-r from-sky-400 via-sky-500 to-sky-700 dark:from-sky-800 dark:via-sky-900 dark:to-indigo-950 p-6 sm:p-10 md:p-12 overflow-hidden shadow-xl shadow-sky-500/15 border border-white/20">
         
-        <!-- Soft Background Particles -->
+        <!-- Animated Moving & Twinkling Star Particles (✦ / ✧ / ★) -->
         <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
-            <span class="absolute top-6 left-1/4 text-white/35 text-lg">✦</span>
-            <span class="absolute top-10 left-1/2 text-white/25 text-xl">✧</span>
-            <span class="absolute bottom-10 left-1/3 text-white/30 text-sm">✦</span>
-            <span class="absolute top-1/3 right-1/4 text-white/35 text-2xl">✦</span>
-            <span class="absolute bottom-6 right-1/3 text-white/25 text-base">✧</span>
+            <!-- Star 1: Top Left Drifting & Twinkling -->
+            <span class="absolute top-8 left-[22%] text-white text-xl animate-star-1">✦</span>
+            
+            <!-- Star 2: Top Center Floating Reverse -->
+            <span class="absolute top-14 left-[48%] text-amber-200 text-2xl animate-star-3">✦</span>
+            
+            <!-- Star 3: Bottom Left Diagonal Drift -->
+            <span class="absolute bottom-12 left-[32%] text-white text-base animate-star-2">✧</span>
+            
+            <!-- Star 4: Center Right Big Glowing Star -->
+            <span class="absolute top-[28%] right-[28%] text-white text-3xl animate-star-4">✦</span>
+            
+            <!-- Star 5: Bottom Right Floating Star -->
+            <span class="absolute bottom-8 right-[36%] text-sky-100 text-lg animate-star-1">✧</span>
+            
+            <!-- Star 6: Top Far Right Star -->
+            <span class="absolute top-10 right-14 text-amber-100 text-xl animate-star-2">✦</span>
+            
+            <!-- Star 7: Center Left Micro Star -->
+            <span class="absolute top-[55%] left-[12%] text-white text-sm animate-star-3">★</span>
         </div>
 
         <!-- Ambient Glow Circles -->
