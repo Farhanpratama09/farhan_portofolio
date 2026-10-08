@@ -50,7 +50,7 @@
                     @click="filter = @js($category)"
                     :class="filter === @js($category) ? 'bg-ink text-paper' : 'bg-white hover:bg-paper-2'"
                     :aria-pressed="(filter === @js($category)).toString()"
-                    class="px-3 py-1.5 border-2 border-ink font-mono text-[11px] uppercase tracking-wider transition-colors cursor-pointer"
+                    class="px-3 py-1.5 border-2 border-ink font-mono text-[11px] uppercase tracking-wider transition-[color,background-color,translate] duration-100 active:translate-x-[2px] active:translate-y-[2px] cursor-pointer"
                 >
                     {{ $category }}
                 </button>
@@ -64,7 +64,7 @@
                 x-show="visible(@js($project['category']), {{ $loop->index }})"
                 @if ($loop->index >= $featuredCount) x-cloak @endif
                 x-transition.opacity.duration.200ms
-                class="bg-white border-2 border-ink shadow-hard flex flex-col"
+                class="bg-white border-2 border-ink shadow-hard flex flex-col transition-all duration-150 motion-safe:hover:-translate-y-1 hover:shadow-hard-lg"
             >
                 <article class="flex flex-col h-full">
                     <!-- Cover -->
@@ -107,7 +107,7 @@
                                     </span>
                                 @else
                                     <a href="{{ $project['github'] }}" target="_blank" rel="noopener noreferrer"
-                                       class="inline-flex items-center justify-center px-3 py-2 border-2 border-ink bg-white hover:bg-paper-2 font-mono text-[11px] uppercase tracking-wider transition-colors">
+                                       class="inline-flex items-center justify-center px-3 py-2 border-2 border-ink bg-white hover:bg-paper-2 font-mono text-[11px] uppercase tracking-wider transition-[background-color,translate] duration-100 active:translate-x-[2px] active:translate-y-[2px]">
                                         [ Kode ]
                                     </a>
                                 @endif

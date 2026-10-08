@@ -80,7 +80,7 @@
             <div class="flex flex-wrap gap-2 font-mono text-[11px] uppercase tracking-wider">
                 <span class="inline-flex items-center gap-1.5 px-2 py-1 border-2 border-ink bg-white">
                     <span class="w-2 h-2 bg-mint border border-ink" aria-hidden="true"></span>
-                    status: tersedia
+                    <span>status: tersedia<span class="animate-pulse font-mono font-bold" aria-hidden="true">_</span></span>
                 </span>
                 <span class="px-2 py-1 border-2 border-ink bg-white">role: {{ strtolower($portfolio['role']) }}</span>
                 <span class="px-2 py-1 border-2 border-ink bg-citypop">focus: laravel + bars</span>

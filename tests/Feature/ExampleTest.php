@@ -26,6 +26,8 @@ class ExampleTest extends TestCase
         $response->assertSeeText('Badan Pusat Statistik (BPS)');
         $response->assertSeeText('Shopee Express');
         $response->assertSeeText('UNDUH CV');
+        $response->assertSeeText('??? // EXPANDABLE_TECH_STACK');
+        $response->assertSeeText('[ Unlock via Recruitment ]');
         $response->assertSeeText('Mari Terhubung & Berdiskusi');
     }
 

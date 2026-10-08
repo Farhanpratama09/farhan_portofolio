@@ -5,7 +5,7 @@
         <div class="flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-wider">
             <p>&copy; {{ date('Y') }} {{ $portfolio['name'] }}</p>
             <p class="text-paper/60 text-center">Dibuat dengan Laravel, Tailwind CSS &amp; Alpine.js</p>
-            <a href="#hero" class="inline-flex items-center gap-1.5 px-2 py-1 border-2 border-paper hover:bg-paper hover:text-ink transition-colors">
+            <a href="#hero" class="inline-flex items-center gap-1.5 px-2 py-1 border-2 border-paper hover:bg-paper hover:text-ink transition-[color,background-color,translate] duration-100 active:translate-x-[2px] active:translate-y-[2px]">
                 Ke atas <span aria-hidden="true">↑</span>
             </a>
         </div>
