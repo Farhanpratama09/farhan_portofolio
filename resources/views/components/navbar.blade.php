@@ -38,8 +38,8 @@
 
             <!-- Brand -->
             <a href="#hero" class="flex items-center gap-2.5 shrink-0" aria-label="{{ $portfolio['name'] }} — kembali ke atas">
-                <span class="grid place-items-center w-8 h-8 bg-ink text-paper font-display font-bold text-sm">
-                    {{ $portfolio['initials'] ?? 'FP' }}
+                <span class="w-7 h-7 flex items-center justify-center bg-sky-400 text-[#1E2229] font-mono font-bold text-xs border border-[#1E2229] shadow-[2px_2px_0_#1E2229] rounded">
+                    FP
                 </span>
                 <span class="font-display font-bold text-[15px] tracking-tight leading-none">
                     {{ $portfolio['name'] }}
