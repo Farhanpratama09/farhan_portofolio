@@ -68,38 +68,48 @@
                     <!-- Isi -->
                     <div class="p-4 sm:p-5 flex-1 flex flex-col gap-3">
                         <h3 class="font-display font-bold text-lg leading-snug">{{ $project['title'] }}</h3>
-                        <p class="text-sm leading-relaxed text-ink-soft flex-1">{{ $project['description'] }}</p>
+                        <p class="text-sm leading-relaxed text-ink-soft flex-1">{{ $project['desc'] ?? $project['description'] ?? '' }}</p>
 
                         <ul class="flex flex-wrap gap-1.5" aria-label="Teknologi">
-                            @foreach ($project['tags'] as $tag)
+                            @foreach ($project['tech'] ?? $project['tags'] ?? [] as $tag)
                                 <li class="px-1.5 py-0.5 border border-ink bg-paper font-mono text-[10px] uppercase tracking-wide">{{ $tag }}</li>
                             @endforeach
                         </ul>
 
                         <!-- Aksi -->
-                        <div class="grid grid-cols-2 gap-2 pt-1">
-                            @if ($isEmptyLink($project['github'] ?? null))
-                                <span aria-disabled="true" class="inline-flex items-center justify-center px-3 py-2 border-2 border-dashed border-ink/40 text-ink/40 font-mono text-[11px] uppercase tracking-wider cursor-not-allowed">
-                                    Kode Privat
-                                </span>
-                            @else
-                                <a href="{{ $project['github'] }}" target="_blank" rel="noopener noreferrer"
-                                   class="inline-flex items-center justify-center px-3 py-2 border-2 border-ink bg-white hover:bg-paper-2 font-mono text-[11px] uppercase tracking-wider transition-colors">
-                                    [ Kode ]
+                        @if (($project['demo'] ?? '') === '#contact')
+                            <div class="pt-1">
+                                <a href="#contact"
+                                   class="press flex items-center justify-center gap-1.5 w-full px-3 py-2 border-2 border-ink bg-citypop shadow-hard-sm font-mono text-[11px] uppercase tracking-wider font-bold">
+                                    <span>Mulai Diskusi</span>
+                                    <span aria-hidden="true">💬</span>
                                 </a>
-                            @endif
+                            </div>
+                        @else
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                @if ($isEmptyLink($project['github'] ?? null))
+                                    <span aria-disabled="true" class="inline-flex items-center justify-center px-3 py-2 border-2 border-dashed border-ink/40 text-ink/40 font-mono text-[11px] uppercase tracking-wider cursor-not-allowed">
+                                        Kode Privat
+                                    </span>
+                                @else
+                                    <a href="{{ $project['github'] }}" target="_blank" rel="noopener noreferrer"
+                                       class="inline-flex items-center justify-center px-3 py-2 border-2 border-ink bg-white hover:bg-paper-2 font-mono text-[11px] uppercase tracking-wider transition-colors">
+                                        [ Kode ]
+                                    </a>
+                                @endif
 
-                            @if ($isEmptyLink($project['demo'] ?? null))
-                                <span aria-disabled="true" title="Demo belum tersedia" class="inline-flex items-center justify-center px-3 py-2 border-2 border-dashed border-ink/40 bg-paper-2 text-ink/45 font-mono text-[11px] uppercase tracking-wider cursor-not-allowed">
-                                    Segera Hadir
-                                </span>
-                            @else
-                                <a href="{{ $project['demo'] }}" target="_blank" rel="noopener noreferrer"
-                                   class="press inline-flex items-center justify-center gap-1 px-3 py-2 border-2 border-ink bg-ink text-paper shadow-hard-sm font-mono text-[11px] uppercase tracking-wider">
-                                    Demo <span aria-hidden="true">↗</span>
-                                </a>
-                            @endif
-                        </div>
+                                @if ($isEmptyLink($project['demo'] ?? null))
+                                    <span aria-disabled="true" title="Demo belum tersedia" class="inline-flex items-center justify-center px-3 py-2 border-2 border-dashed border-ink/40 bg-paper-2 text-ink/45 font-mono text-[11px] uppercase tracking-wider cursor-not-allowed">
+                                        Segera Hadir
+                                    </span>
+                                @else
+                                    <a href="{{ $project['demo'] }}" target="_blank" rel="noopener noreferrer"
+                                       class="press inline-flex items-center justify-center gap-1 px-3 py-2 border-2 border-ink bg-ink text-paper shadow-hard-sm font-mono text-[11px] uppercase tracking-wider">
+                                        Demo <span aria-hidden="true">↗</span>
+                                    </a>
+                                @endif
+                            </div>
+                        @endif
                     </div>
                 </article>
             </li>
