@@ -62,6 +62,23 @@ class ExampleTest extends TestCase
         });
     }
 
+    public function test_contact_form_handles_ajax_submission_json(): void
+    {
+        Mail::fake();
+
+        $response = $this->postJson('/contact', [
+            'name' => 'Fajar Pratama',
+            'email' => 'fajar@example.com',
+            'message' => 'Halo, ini pengujian pesan via AJAX.',
+        ]);
+
+        $response->assertOk();
+        $response->assertJson([
+            'success' => true,
+        ]);
+        $response->assertJsonStructure(['success', 'message']);
+    }
+
     public function test_contact_social_links_open_external_messaging_apps(): void
     {
         $response = $this->get('/');
