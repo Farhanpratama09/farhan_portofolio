@@ -37,8 +37,8 @@ class PortfolioController extends Controller
 
             return redirect()->route('home')
                 ->with('success', 'Pesan Anda berhasil dikirim. Saya akan segera membalasnya.');
-        } catch (Throwable $e) {
-            report($e);
+        } catch (\Exception $e) {
+            \Log::error($e->getMessage());
 
             return redirect()->route('home')
                 ->with('error', 'Koneksi pengiriman email server sedang dalam kendala. Silakan hubungi langsung via WhatsApp atau email fahranpratama64@gmail.com.');
