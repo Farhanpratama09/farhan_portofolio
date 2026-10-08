@@ -1,124 +1,95 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../views/**/*.blade.php';
 
+/*
+|--------------------------------------------------------------------------
+| Design Tokens — "Retro Anime OS / 90s Citypop Desk"
+|--------------------------------------------------------------------------
+| Warna   : bg-paper, bg-paper-2, border-ink, text-ink, bg-citypop, bg-mint,
+|           bg-tangerine, bg-tape
+| Font    : font-display (Space Grotesk), font-sans (DM Sans),
+|           font-mono (JetBrains Mono)
+| Shadow  : shadow-hard-sm, shadow-hard, shadow-hard-lg (tanpa blur)
+*/
 @theme {
-    --font-rounded: 'M PLUS Rounded 1c', 'Quicksand', system-ui, -apple-system, sans-serif;
-    --font-sans: 'M PLUS Rounded 1c', 'Quicksand', system-ui, -apple-system, sans-serif;
+    --color-paper: #FAF7F2;
+    --color-paper-2: #F5F2EB;
+    --color-ink: #1E2229;
+    --color-ink-soft: #4A505A;
+    --color-citypop: #38BDF8;
+    --color-mint: #34D399;
+    --color-tangerine: #FB923C;
+    --color-tape: #F3E3A1;
+
+    --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --shadow-hard-sm: 2px 2px 0 0 #1E2229;
+    --shadow-hard: 3px 3px 0 0 #1E2229;
+    --shadow-hard-lg: 5px 5px 0 0 #1E2229;
 }
 
 html {
     scroll-behavior: smooth;
-    font-family: 'M PLUS Rounded 1c', 'Quicksand', sans-serif;
+    scroll-padding-top: 4.5rem;
 }
 
-/* Custom Floating & Star Motion Animations */
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
+[x-cloak] {
+    display: none !important;
 }
 
-@keyframes float-slow {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-12px) rotate(1.5deg);
-    }
+/* Kertas bergaris grid tipis untuk latar halaman */
+.paper-grid {
+    background-color: var(--color-paper);
+    background-image:
+        linear-gradient(rgba(30, 34, 41, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 34, 41, 0.045) 1px, transparent 1px);
+    background-size: 28px 28px;
 }
 
-/* Moving & Twinkling Stars Animations */
-@keyframes star-twinkle-1 {
-    0%, 100% {
-        transform: translate(0px, 0px) scale(0.8) rotate(0deg);
-        opacity: 0.35;
-        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
-    }
-    50% {
-        transform: translate(18px, -22px) scale(1.3) rotate(45deg);
-        opacity: 0.95;
-        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
-    }
+/* Titik halftone untuk area cover & placeholder foto */
+.halftone {
+    background-image: radial-gradient(rgba(30, 34, 41, 0.22) 1px, transparent 1.2px);
+    background-size: 9px 9px;
 }
 
-@keyframes star-twinkle-2 {
-    0%, 100% {
-        transform: translate(0px, 0px) scale(1.1) rotate(0deg);
-        opacity: 0.8;
-        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
-    }
-    50% {
-        transform: translate(-20px, 18px) scale(0.65) rotate(-45deg);
-        opacity: 0.25;
-        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
-    }
+/* Garis diagonal tipis (pola placeholder) */
+.hatch {
+    background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(30, 34, 41, 0.07) 0 1px,
+        transparent 1px 8px
+    );
 }
 
-@keyframes star-twinkle-3 {
-    0%, 100% {
-        transform: translate(0px, 0px) scale(0.9) rotate(0deg);
-        opacity: 0.4;
-    }
-    33% {
-        transform: translate(15px, 15px) scale(1.25) rotate(30deg);
-        opacity: 0.9;
-        filter: drop-shadow(0 0 12px rgba(254, 240, 138, 0.9));
-    }
-    66% {
-        transform: translate(-12px, 25px) scale(0.75) rotate(-20deg);
-        opacity: 0.5;
-    }
+/* Tombol taktil: turun saat ditekan, bayangan mengecil */
+.press {
+    transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+.press:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 0 var(--color-ink);
+}
+.press:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 var(--color-ink);
 }
 
-@keyframes star-twinkle-4 {
-    0%, 100% {
-        transform: translate(0px, 0px) scale(1) rotate(0deg);
-        opacity: 0.5;
-    }
-    50% {
-        transform: translate(-16px, -20px) scale(1.4) rotate(60deg);
-        opacity: 1;
-        filter: drop-shadow(0 0 14px rgba(255, 255, 255, 1));
-    }
+/* Lampu status berkedip seperti LED (tanpa glow) */
+@keyframes led-blink {
+    0%, 70%, 100% { opacity: 1; }
+    80% { opacity: 0.25; }
+}
+.led {
+    animation: led-blink 2.4s steps(1, end) infinite;
 }
 
-.animate-star-1 {
-    animation: star-twinkle-1 4.5s ease-in-out infinite;
-}
-
-.animate-star-2 {
-    animation: star-twinkle-2 5.5s ease-in-out infinite;
-}
-
-.animate-star-3 {
-    animation: star-twinkle-3 6.5s ease-in-out infinite;
-}
-
-.animate-star-4 {
-    animation: star-twinkle-4 4s ease-in-out infinite;
-}
-
-.animate-float {
-    animation: float 4s ease-in-out infinite;
-}
-
-.animate-float-slow {
-    animation: float-slow 6s ease-in-out infinite;
-}
-
-/* Hide Scrollbar for Horizontal Carousel */
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .led { animation: none; }
+    .press, .press:hover, .press:active { transform: none; }
 }

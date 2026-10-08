@@ -1,112 +1,124 @@
 @props(['portfolio'])
 
-<section id="hero" class="relative py-4 sm:py-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <!-- Main Banner Card -->
-    <div class="relative w-full rounded-3xl bg-gradient-to-r from-sky-400 via-sky-500 to-sky-700 dark:from-sky-800 dark:via-sky-900 dark:to-indigo-950 p-6 sm:p-10 md:p-12 overflow-hidden shadow-xl shadow-sky-500/15 border border-white/20">
-        
-        <!-- Animated Moving & Twinkling Star Particles (✦ / ✧ / ★) -->
-        <div class="absolute inset-0 pointer-events-none select-none overflow-hidden">
-            <!-- Star 1: Top Left Drifting & Twinkling -->
-            <span class="absolute top-8 left-[22%] text-white text-xl animate-star-1">✦</span>
-            
-            <!-- Star 2: Top Center Floating Reverse -->
-            <span class="absolute top-14 left-[48%] text-amber-200 text-2xl animate-star-3">✦</span>
-            
-            <!-- Star 3: Bottom Left Diagonal Drift -->
-            <span class="absolute bottom-12 left-[32%] text-white text-base animate-star-2">✧</span>
-            
-            <!-- Star 4: Center Right Big Glowing Star -->
-            <span class="absolute top-[28%] right-[28%] text-white text-3xl animate-star-4">✦</span>
-            
-            <!-- Star 5: Bottom Right Floating Star -->
-            <span class="absolute bottom-8 right-[36%] text-sky-100 text-lg animate-star-1">✧</span>
-            
-            <!-- Star 6: Top Far Right Star -->
-            <span class="absolute top-10 right-14 text-amber-100 text-xl animate-star-2">✦</span>
-            
-            <!-- Star 7: Center Left Micro Star -->
-            <span class="absolute top-[55%] left-[12%] text-white text-sm animate-star-3">★</span>
+@php
+    $about = $portfolio['about'];
+    $photoPath = $portfolio['photo'] ?? null;
+    $hasPhoto = $photoPath && file_exists(public_path($photoPath));
+@endphp
+
+<section id="hero" aria-labelledby="hero-title" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14 pb-12 sm:pb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+
+        <!-- Kartu Karakter -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-start">
+            <figure class="relative w-full max-w-[340px] -rotate-[1.5deg]">
+                <!-- Tape sudut -->
+                <span aria-hidden="true" class="absolute -top-3 -left-5 z-10 w-24 h-7 bg-tape/90 border border-ink/15 -rotate-[24deg]"></span>
+                <span aria-hidden="true" class="absolute -top-3 -right-5 z-10 w-24 h-7 bg-tape/90 border border-ink/15 rotate-[22deg]"></span>
+
+                <div class="bg-white border-2 border-ink shadow-hard-lg">
+                    <!-- Header kartu -->
+                    <div class="flex items-center justify-between px-3 py-2 border-b-2 border-ink bg-paper-2 font-mono text-[10px] uppercase tracking-widest">
+                        <span>Player Card</span>
+                        <span>No. 001</span>
+                    </div>
+
+                    <!-- Area foto: ganti dengan file public/{{ $photoPath }} -->
+                    <div class="relative aspect-[4/5] m-3 border-2 border-ink overflow-hidden bg-paper-2">
+                        @if ($hasPhoto)
+                            <img
+                                src="{{ asset($photoPath) }}"
+                                alt="Foto {{ $portfolio['name'] }}"
+                                width="640" height="800"
+                                class="w-full h-full object-cover"
+                            >
+                        @else
+                            <div class="absolute inset-0 hatch"></div>
+                            <div class="absolute inset-0 grid place-items-center">
+                                <span class="font-display font-bold text-[7rem] leading-none tracking-tighter text-ink select-none">
+                                    {{ $portfolio['initials'] ?? 'FP' }}
+                                </span>
+                            </div>
+                            <span class="absolute bottom-2 left-2 px-1.5 py-0.5 bg-white border border-ink font-mono text-[9px] uppercase tracking-wider">
+                                img: {{ $photoPath }}
+                            </span>
+                        @endif
+
+                        @if ($portfolio['available'] ?? false)
+                            <!-- Stempel ketersediaan -->
+                            <span class="absolute top-3 right-3 rotate-[8deg] px-2 py-1 border-2 border-tangerine text-tangerine bg-white/85 font-mono font-bold text-[10px] uppercase tracking-widest">
+                                Open to Work
+                            </span>
+                        @endif
+                    </div>
+
+                    <!-- Statistik kartu -->
+                    <figcaption class="px-3 pb-3">
+                        <p class="font-display font-bold text-lg leading-tight">{{ $portfolio['name'] }}</p>
+                        <dl class="mt-2 grid grid-cols-3 border-2 border-ink font-mono text-[10px] uppercase">
+                            <div class="px-2 py-1.5 border-r-2 border-ink">
+                                <dt class="text-ink-soft">Class</dt>
+                                <dd class="font-bold truncate">Web Dev</dd>
+                            </div>
+                            <div class="px-2 py-1.5 border-r-2 border-ink">
+                                <dt class="text-ink-soft">Main</dt>
+                                <dd class="font-bold">Laravel</dd>
+                            </div>
+                            <div class="px-2 py-1.5">
+                                <dt class="text-ink-soft">Base</dt>
+                                <dd class="font-bold truncate">{{ $portfolio['location'] ?? 'Indonesia' }}</dd>
+                            </div>
+                        </dl>
+                    </figcaption>
+                </div>
+            </figure>
         </div>
 
-        <!-- Ambient Glow Circles -->
-        <div class="absolute -bottom-24 -left-20 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-        <div class="absolute -top-24 -right-20 w-80 h-80 bg-sky-300/20 rounded-full blur-2xl pointer-events-none"></div>
+        <!-- Perkenalan -->
+        <div class="lg:col-span-7 space-y-6">
+            <!-- Badge status taktis -->
+            <div class="flex flex-wrap gap-2 font-mono text-[11px] uppercase tracking-wider">
+                <span class="inline-flex items-center gap-1.5 px-2 py-1 border-2 border-ink bg-white">
+                    <span class="w-2 h-2 bg-mint border border-ink" aria-hidden="true"></span>
+                    status: tersedia
+                </span>
+                <span class="px-2 py-1 border-2 border-ink bg-white">role: {{ strtolower($portfolio['role']) }}</span>
+                <span class="px-2 py-1 border-2 border-ink bg-citypop">focus: laravel + bars</span>
+            </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            
-            <!-- Left Content Column -->
-            <div class="lg:col-span-8 flex flex-col justify-between space-y-5 text-white">
-                
-                <!-- Simple Top Greeting -->
-                <div class="flex items-center gap-2">
-                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-bold tracking-wide border border-white/30">
-                        <span>👋</span> Halo, Selamat Datang
-                    </span>
-                </div>
-
-                <!-- Main Name & Role Headline -->
-                <div>
-                    <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white drop-shadow-sm font-sans">
-                        {{ $portfolio['name'] }}
-                    </h1>
-                    <p class="mt-2 text-lg sm:text-2xl font-bold text-sky-100">
-                        {{ $portfolio['role'] }}
-                    </p>
-                </div>
-
-                <!-- Bio -->
-                <p class="text-sm sm:text-base text-sky-50 leading-relaxed max-w-xl">
-                    {{ $portfolio['tagline'] }}
+            <div class="space-y-3">
+                <h1 id="hero-title" class="font-display font-bold text-4xl sm:text-5xl lg:text-[3.5rem] leading-[1.05] tracking-tight">
+                    {{ $about['greeting'] }}
+                    <span class="block text-ink-soft">{{ $portfolio['role'] }} yang suka hal rapi.</span>
+                </h1>
+                <p class="max-w-xl text-base sm:text-[17px] leading-relaxed text-ink-soft">
+                    {{ $about['bio'] }}
                 </p>
-
-                <!-- CTA Actions -->
-                <div class="pt-2 flex flex-wrap items-center gap-4">
-                    <a 
-                        href="#projects" 
-                        class="inline-flex items-center gap-1.5 font-bold text-sm sm:text-base text-white hover:text-amber-200 underline underline-offset-8 decoration-2 decoration-white/60 hover:decoration-amber-300 transition"
-                    >
-                        <span>Lihat Proyek</span>
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </a>
-
-                    <a 
-                        href="#contact" 
-                        class="px-5 py-2.5 rounded-full bg-white text-sky-700 hover:bg-sky-50 font-bold text-xs sm:text-sm shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
-                    >
-                        Hubungi Saya
-                    </a>
-                </div>
-
-                <!-- Bottom Slider Indicator -->
-                <div class="pt-4 flex items-center gap-2">
-                    <span class="w-8 h-1.5 rounded-full bg-white shadow-sm"></span>
-                    <span class="w-2.5 h-1.5 rounded-full bg-white/40"></span>
-                    <span class="w-2.5 h-1.5 rounded-full bg-white/40"></span>
-                    <span class="w-2.5 h-1.5 rounded-full bg-white/40"></span>
-                </div>
-
             </div>
 
-            <!-- Right Avatar/Illustration Frame -->
-            <div class="lg:col-span-4 flex justify-center lg:justify-end">
-                <div class="relative group">
-                    <div class="absolute -inset-2 bg-gradient-to-tr from-sky-200 to-indigo-200 rounded-full blur-lg opacity-40 group-hover:opacity-70 transition duration-500"></div>
-                    
-                    <div class="relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-full border-4 border-white/90 shadow-2xl overflow-hidden bg-gradient-to-b from-sky-300 via-sky-400 to-indigo-700 flex items-center justify-center">
-                        <div class="flex flex-col items-center justify-center text-center p-4 text-white">
-                            <span class="text-5xl sm:text-6xl mb-1">👨‍💻</span>
-                            <span class="text-xs sm:text-sm font-extrabold tracking-wider uppercase">Farhan P.</span>
-                            <span class="text-[11px] text-sky-100 font-bold">Web Developer</span>
-                        </div>
+            <!-- CTA -->
+            <div class="flex flex-wrap gap-3">
+                <a href="#projects" class="press inline-flex items-center gap-2 px-5 py-2.5 bg-citypop border-2 border-ink shadow-hard font-display font-bold text-sm">
+                    Lihat Proyek
+                    <span aria-hidden="true">→</span>
+                </a>
+                <a href="#contact" class="press inline-flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-ink shadow-hard font-display font-bold text-sm">
+                    Hubungi Saya
+                </a>
+            </div>
+
+            <!-- Fokus kerja (esensi About) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 border-2 border-ink bg-white">
+                <h2 class="sr-only">Fokus kerja</h2>
+                @foreach ($about['pillars'] as $pillar)
+                    <div class="p-4 {{ ! $loop->last ? 'border-b-2 sm:border-b-0 sm:border-r-2 border-ink' : '' }}">
+                        <span class="font-mono text-[11px] text-ink-soft">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+                        <h3 class="mt-1 font-display font-bold text-[15px] leading-snug">{{ $pillar['title'] }}</h3>
+                        <p class="mt-1 text-[13px] leading-relaxed text-ink-soft">{{ $pillar['desc'] }}</p>
                     </div>
-                </div>
+                @endforeach
             </div>
-
         </div>
 
     </div>
-
 </section>

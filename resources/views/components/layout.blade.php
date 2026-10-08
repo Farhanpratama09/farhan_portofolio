@@ -1,43 +1,59 @@
+@props(['portfolio'])
+
+@php
+    $pageTitle = $portfolio['name'] . ' — ' . $portfolio['role'] . ' (Laravel)';
+    $pageDescription = $portfolio['tagline'];
+    $canonical = url('/');
+    $photoPath = $portfolio['photo'] ?? null;
+    $ogImage = ($photoPath && file_exists(public_path($photoPath))) ? asset($photoPath) : null;
+@endphp
+
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth" x-data :class="$store.darkMode.on ? 'dark' : ''">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <!-- Primary Meta Tags -->
-    <title>{{ $portfolio['name'] }} — {{ $portfolio['role'] }} | Anime Dashboard UI</title>
-    <meta name="title" content="{{ $portfolio['name'] }} — {{ $portfolio['role'] }}">
-    <meta name="description" content="{{ $portfolio['tagline'] }}">
+    <title>{{ $pageTitle }}</title>
+    <meta name="title" content="{{ $pageTitle }}">
+    <meta name="description" content="{{ $pageDescription }}">
     <meta name="author" content="{{ $portfolio['name'] }}">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#FAF7F2">
+    <link rel="canonical" href="{{ $canonical }}">
 
-    <!-- Google Fonts: M PLUS Rounded 1c & Quicksand -->
+    <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:site_name" content="{{ $portfolio['name'] }}">
+    <meta property="og:url" content="{{ $canonical }}">
+    <meta property="og:title" content="{{ $pageTitle }}">
+    <meta property="og:description" content="{{ $pageDescription }}">
+    @if ($ogImage)
+        <meta property="og:image" content="{{ $ogImage }}">
+    @endif
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="{{ $ogImage ? 'summary_large_image' : 'summary' }}">
+    <meta name="twitter:title" content="{{ $pageTitle }}">
+    <meta name="twitter:description" content="{{ $pageDescription }}">
+    @if ($ogImage)
+        <meta name="twitter:image" content="{{ $ogImage }}">
+    @endif
+
+    <!-- Google Fonts: Space Grotesk (heading), DM Sans (paragraf), JetBrains Mono (label teknis) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:title" content="{{ $portfolio['name'] }} — {{ $portfolio['role'] }}">
-    <meta property="og:description" content="{{ $portfolio['tagline'] }}">
-
-    <!-- Inline Script to Prevent Dark Mode Flash (FOUC) -->
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-[#f4f6f9] text-slate-700 dark:bg-zinc-950 dark:text-zinc-100 font-sans antialiased transition-colors duration-300 min-h-screen flex flex-col selection:bg-sky-500 selection:text-white relative overflow-x-hidden">
+<body class="paper-grid text-ink font-sans antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-citypop selection:text-ink">
 
-    <!-- Top Ambient Star / Glow Light -->
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-sky-200/40 via-sky-100/20 to-transparent dark:from-sky-950/30 dark:via-sky-900/10 dark:to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:px-3 focus:py-2 focus:bg-ink focus:text-paper focus:font-mono focus:text-xs">
+        Lewati ke konten
+    </a>
 
     {{ $slot }}
 

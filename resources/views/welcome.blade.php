@@ -1,24 +1,20 @@
 <x-layout :portfolio="$portfolio">
-    <!-- Top Floating Navbar with Active Glowing Lamp Indicator -->
+    <!-- A. Top System Bar -->
     <x-navbar :portfolio="$portfolio" />
 
-    <main class="flex-1 space-y-6 sm:space-y-8 pb-12">
-        <!-- 1. Hero Showcase Banner -->
+    <main id="main" class="flex-1">
+        <!-- B. Hero: Kartu Karakter + Perkenalan (termasuk esensi About) -->
         <x-hero :portfolio="$portfolio" />
 
-        <!-- 2. Scalable Projects Showcase Gallery (Horizontal Slider + Grid Toggle) -->
+        <!-- C. Inventory Stack -->
+        <x-skills :portfolio="$portfolio" />
+
+        <!-- D. Proyek Pilihan -->
         <x-projects :portfolio="$portfolio" />
 
-        <!-- 3. Dedicated About & Engineering Philosophy Section -->
-        <x-about :portfolio="$portfolio" />
-
-        <!-- 4. Interactive Live Dashboard (Spinning Vinyl Lofi Player & Floating Stickers) -->
-        <x-dashboard-widgets :portfolio="$portfolio" />
-
-        <!-- 5. Contact Section -->
+        <!-- E. Correspondence Desk -->
         <x-contact :portfolio="$portfolio" />
     </main>
 
-    <!-- Footer Component -->
     <x-footer :portfolio="$portfolio" />
 </x-layout>

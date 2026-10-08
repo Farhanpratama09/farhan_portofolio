@@ -16,14 +16,26 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Kartu Profil (Hero)
+    |--------------------------------------------------------------------------
+    | Foto: taruh file di public/images/profile.jpg. Selama file belum ada,
+    | kartu otomatis menampilkan placeholder inisial "FP".
+    */
+    'photo' => 'images/profile.jpg',
+    'initials' => 'FP',
+    'location' => 'Indonesia',
+    'timezone' => 'Asia/Jakarta',
+    'available' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Menu Navigasi
     |--------------------------------------------------------------------------
     */
     'nav' => [
-        ['id' => 'hero', 'label' => 'Home', 'url' => '#hero'],
+        ['id' => 'hero', 'label' => 'Profil', 'url' => '#hero'],
+        ['id' => 'skills', 'label' => 'Keahlian', 'url' => '#skills'],
         ['id' => 'projects', 'label' => 'Proyek', 'url' => '#projects'],
-        ['id' => 'about', 'label' => 'Tentang', 'url' => '#about'],
-        ['id' => 'dashboard', 'label' => 'Aktivitas', 'url' => '#dashboard'],
         ['id' => 'contact', 'label' => 'Kontak', 'url' => '#contact'],
     ],
 
@@ -91,37 +103,37 @@ return [
     |--------------------------------------------------------------------------
     */
     'about' => [
-        'title' => 'Tentang Saya',
-        'subtitle' => 'Pengembangan Web & Sistem Informasi',
-        'bio' => 'Halo! Saya Farhan Pratama, seorang Web Developer yang menyukai pembuatan aplikasi web yang rapi, mudah digunakan, dan terstruktur. Terbiasa bekerja dengan ekosistem PHP/Laravel untuk backend serta Tailwind CSS untuk membangun tampilan antarmuka yang modern dan responsif.',
+        'greeting' => 'Halo, saya Farhan.',
+        'bio' => 'Saya membangun aplikasi web dengan Laravel, mulai dari merancang database, menulis logika backend, sampai menyusun antarmuka dengan Tailwind CSS. Belakangan saya banyak mendalami metode BARS (Behaviorally Anchored Rating Scale) dan menerapkannya ke sistem penilaian kinerja guru berbasis web.',
         'pillars' => [
             [
-                'emoji' => '💻',
                 'title' => 'Backend & Database',
-                'desc' => 'Pengembangan logika aplikasi dengan Laravel serta perancangan database MySQL.',
+                'desc' => 'Logika aplikasi dengan Laravel dan perancangan skema MySQL.',
             ],
             [
-                'emoji' => '🎨',
-                'title' => 'Tampilan Responsif',
-                'desc' => 'Penyusunan UI yang rapi di berbagai ukuran layar dengan Tailwind CSS dan Alpine.js.',
+                'title' => 'Antarmuka Responsif',
+                'desc' => 'Tampilan rapi di berbagai layar dengan Tailwind CSS dan Alpine.js.',
             ],
             [
-                'emoji' => '📂',
-                'title' => 'Struktur Kode Rapi',
-                'desc' => 'Penulisan kode yang modular dan teratur agar mudah dikembangkan ke depannya.',
+                'title' => 'Penilaian Berbasis BARS',
+                'desc' => 'Menerjemahkan skala perilaku menjadi alur penilaian yang terukur.',
             ],
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Pemutar Musik Sederhana
+    | Inventory Stack (Keahlian)
     |--------------------------------------------------------------------------
+    | 'code' = singkatan di tile, 'accent' = citypop | mint | tangerine
     */
-    'music' => [
-        'title' => 'Lofi Coding Session',
-        'artist' => 'Farhan Playlist',
-        'bpm' => 'Santai & Fokus',
+    'skills' => [
+        ['code' => 'Lv', 'name' => 'Laravel', 'type' => 'Framework', 'accent' => 'tangerine'],
+        ['code' => 'Php', 'name' => 'PHP', 'type' => 'Bahasa', 'accent' => 'citypop'],
+        ['code' => 'Sql', 'name' => 'MySQL', 'type' => 'Database', 'accent' => 'mint'],
+        ['code' => 'Tw', 'name' => 'Tailwind CSS', 'type' => 'Styling', 'accent' => 'citypop'],
+        ['code' => 'Git', 'name' => 'Git', 'type' => 'Versi Kontrol', 'accent' => 'tangerine'],
+        ['code' => 'Bs', 'name' => 'Algoritma BARS', 'type' => 'Metode', 'accent' => 'mint'],
     ],
 
     /*

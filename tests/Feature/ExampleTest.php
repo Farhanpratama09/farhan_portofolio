@@ -17,12 +17,25 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSeeText('Farhan Pratama');
-        $response->assertSeeText('Aplikasi Monev Kinerja Guru');
-        $response->assertSeeText('Tentang Saya');
+        $response->assertSeeText('Halo, saya Farhan.');
+        $response->assertSeeText('BARS');
+        $response->assertSeeText('Keahlian & Perkakas');
         $response->assertSeeText('Proyek Pilihan');
-        $response->assertSeeText('Musik Koding');
-        $response->assertSeeText('Fokus & Teknologi');
+        $response->assertSeeText('Aplikasi Monev Kinerja Guru');
         $response->assertSeeText('Mari Terhubung & Berdiskusi');
+    }
+
+    public function test_portfolio_page_has_seo_meta_and_disabled_empty_demo(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertOk();
+        $response->assertSee('<link rel="canonical"', false);
+        $response->assertSee('property="og:title"', false);
+        $response->assertSee('name="description"', false);
+        // Semua demo di config masih '#', jadi tombol tampil sebagai "Segera Hadir" tanpa href '#'
+        $response->assertSeeText('Segera Hadir');
+        $response->assertDontSee('href="#"', false);
     }
 
     public function test_contact_form_sends_email_message(): void
