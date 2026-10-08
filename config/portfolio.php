@@ -9,8 +9,8 @@ return [
     'name' => 'Farhan Pratama',
     'role' => 'Web Developer',
     'tagline' => 'Saya fokus mengembangkan aplikasi web dengan Laravel dan Tailwind CSS, mulai dari perancangan sistem, database, hingga antarmuka pengguna yang nyaman digunakan.',
-    'email' => 'fahranpratama@gmail.com',
-    'whatsapp' => 'https://wa.me/6281234567890',
+    'email' => 'fahranpratama64@gmail.com',
+    'whatsapp' => 'https://wa.me/628218919798?text=' . urlencode('Halo Farhan, saya ingin berdiskusi mengenai proyek atau kolaborasi.'),
     'github' => 'https://github.com/farhanpratama',
     'linkedin' => 'https://linkedin.com/in/farhanpratama',
 
@@ -130,12 +130,20 @@ return [
     |--------------------------------------------------------------------------
     */
     'contact' => [
-        'form_endpoint' => 'https://formspree.io/f/your-form-id',
+        'form_endpoint' => '/contact',
         'socials' => [
             ['name' => 'GitHub', 'url' => 'https://github.com/farhanpratama', 'icon' => 'github'],
             ['name' => 'LinkedIn', 'url' => 'https://linkedin.com/in/farhanpratama', 'icon' => 'linkedin'],
-            ['name' => 'WhatsApp', 'url' => 'https://wa.me/6281234567890', 'icon' => 'whatsapp'],
-            ['name' => 'Email', 'url' => 'mailto:fahranpratama@gmail.com', 'icon' => 'email'],
+            [
+                'name' => 'WhatsApp',
+                'url' => 'https://wa.me/628218919798?text=' . urlencode('Halo Farhan, saya ingin berdiskusi mengenai proyek atau kolaborasi. Terima kasih.'),
+                'icon' => 'whatsapp',
+            ],
+            [
+                'name' => 'Email',
+                'url' => 'mailto:fahranpratama64@gmail.com?subject=' . urlencode('Kontak dari Website Portfolio') . '&body=' . urlencode("Halo Farhan,\n\nSaya ingin berdiskusi mengenai proyek / kolaborasi.\n\nTerima kasih."),
+                'icon' => 'email',
+            ],
         ],
     ],
 ];
