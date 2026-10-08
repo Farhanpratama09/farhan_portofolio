@@ -16,7 +16,7 @@
                     Mari Terhubung &amp; Berdiskusi
                 </h2>
                 <p class="text-[15px] leading-relaxed text-ink-soft">
-                    Punya proyek aplikasi web, butuh sistem informasi berbasis Laravel, atau sekadar ingin ngobrol soal penilaian berbasis BARS? Tulis pesan lewat formulir, atau hubungi saya langsung di salah satu kanal berikut.
+                    Terbuka untuk peluang kerja full-time, kontrak, maupun kolaborasi proyek web berbasis Laravel. Kirim pesan untuk terhubung langsung.
                 </p>
 
                 <!-- Pill sosial -->

@@ -83,7 +83,7 @@
                     <span>status: tersedia<span class="animate-pulse font-mono font-bold" aria-hidden="true">_</span></span>
                 </span>
                 <span class="px-2 py-1 border-2 border-ink bg-white">role: {{ strtolower($portfolio['role']) }}</span>
-                <span class="px-2 py-1 border-2 border-ink bg-citypop">focus: laravel + bars</span>
+                <span class="px-2 py-1 border-2 border-ink bg-citypop">focus: fullstack laravel</span>
             </div>
 
             <div class="space-y-3">

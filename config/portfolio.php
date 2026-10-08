@@ -88,7 +88,7 @@ return [
     */
     'about' => [
         'greeting' => 'Halo, saya Farhan.',
-        'bio' => 'Saya membangun aplikasi web dengan Laravel, mulai dari merancang database, menulis logika backend, sampai menyusun antarmuka dengan Tailwind CSS. Belakangan saya banyak mendalami metode BARS (Behaviorally Anchored Rating Scale) dan menerapkannya ke sistem penilaian kinerja guru berbasis web.',
+        'bio' => 'Web developer yang berfokus pada ekosistem Laravel dan Tailwind CSS. Terbiasa merancang skema database, menyusun arsitektur logika backend yang terstruktur, hingga membangun antarmuka web yang responsif dan interaktif.',
         'pillars' => [
             [
                 'title' => 'Backend & Database',
@@ -99,8 +99,8 @@ return [
                 'desc' => 'Tampilan rapi di berbagai layar dengan Tailwind CSS dan Alpine.js.',
             ],
             [
-                'title' => 'Penilaian Berbasis BARS',
-                'desc' => 'Menerjemahkan skala perilaku menjadi alur penilaian yang terukur.',
+                'title' => 'Struktur Kode Bersih',
+                'desc' => 'Penyusunan arsitektur kode yang modular, efisien, dan mudah dirawat.',
             ],
         ],
     ],
