@@ -5,36 +5,34 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-// Sesuaikan storage path ke /tmp jika berjalan di environment serverless (Vercel)
-if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL']) || getenv('VERCEL')) {
-    $storagePath = '/tmp/storage';
+// Setup folder storage di /tmp untuk environment serverless Vercel
+$storagePath = '/tmp/storage';
 
-    $storageDirs = [
-        $storagePath,
-        $storagePath . '/app',
-        $storagePath . '/app/public',
-        $storagePath . '/framework',
-        $storagePath . '/framework/cache',
-        $storagePath . '/framework/cache/data',
-        $storagePath . '/framework/sessions',
-        $storagePath . '/framework/views',
-        $storagePath . '/logs',
-    ];
+$storageDirs = [
+    $storagePath,
+    $storagePath . '/app',
+    $storagePath . '/app/public',
+    $storagePath . '/framework',
+    $storagePath . '/framework/cache',
+    $storagePath . '/framework/cache/data',
+    $storagePath . '/framework/sessions',
+    $storagePath . '/framework/views',
+    $storagePath . '/logs',
+];
 
-    foreach ($storageDirs as $dir) {
-        if (!is_dir($dir)) {
-            mkdir($dir, 0755, true);
-        }
+foreach ($storageDirs as $dir) {
+    if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
     }
-
-    putenv("APP_STORAGE={$storagePath}");
-    $_ENV['APP_STORAGE'] = $storagePath;
-    $_SERVER['APP_STORAGE'] = $storagePath;
-
-    putenv("VIEW_COMPILED_PATH={$storagePath}/framework/views");
-    $_ENV['VIEW_COMPILED_PATH'] = "{$storagePath}/framework/views";
-    $_SERVER['VIEW_COMPILED_PATH'] = "{$storagePath}/framework/views";
 }
+
+putenv("APP_STORAGE={$storagePath}");
+$_ENV['APP_STORAGE'] = $storagePath;
+$_SERVER['APP_STORAGE'] = $storagePath;
+
+putenv("VIEW_COMPILED_PATH={$storagePath}/framework/views");
+$_ENV['VIEW_COMPILED_PATH'] = "{$storagePath}/framework/views";
+$_SERVER['VIEW_COMPILED_PATH'] = "{$storagePath}/framework/views";
 
 // Register the Composer autoloader...
 require __DIR__ . '/../vendor/autoload.php';
@@ -43,8 +41,6 @@ require __DIR__ . '/../vendor/autoload.php';
 /** @var Application $app */
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
-if (isset($storagePath)) {
-    $app->useStoragePath($storagePath);
-}
+$app->useStoragePath($storagePath);
 
 $app->handleRequest(Request::capture());
