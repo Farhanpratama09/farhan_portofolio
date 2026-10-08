@@ -27,7 +27,7 @@ return [
     'timezone' => 'Asia/Jakarta',
     'available' => true,
 
-    'cv_url' => '/files/cv.pdf',
+    'cv_url' => '/files/cv_FarhanPratama.pdf',
 
     /*
     |--------------------------------------------------------------------------
@@ -140,9 +140,9 @@ return [
             ],
         ],
         [
-            'role' => 'Daily Logistics Associate',
-            'company' => 'Shopee Express (DC Sungai Kakap)',
-            'period' => '1 Bulan',
+            'role' => 'Daily Worker Logistics Associate',
+            'company' => 'Shopee Express (DC Sungai Kakap, Kubu Raya, Kalimantan Barat)',
+            'period' => '2026 · 1 Bulan',
             'status' => 'Nonaktif',
             'is_active' => false,
             'desc' => 'Mengelola alur logistik pergudangan harian dalam lingkungan kerja bertempo cepat (fast-paced environment).',
