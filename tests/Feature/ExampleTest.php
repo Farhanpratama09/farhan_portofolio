@@ -48,7 +48,7 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('mailto:fahranpratama64@gmail.com?subject=', false);
+        $response->assertSee('https://mail.google.com/mail/?view=cm', false);
         $response->assertSee('https://wa.me/628218919798?text=', false);
     }
 }

@@ -141,7 +141,7 @@ return [
             ],
             [
                 'name' => 'Email',
-                'url' => 'mailto:fahranpratama64@gmail.com?subject=' . urlencode('Kontak dari Website Portfolio') . '&body=' . urlencode("Halo Farhan,\n\nSaya ingin berdiskusi mengenai proyek / kolaborasi.\n\nTerima kasih."),
+                'url' => 'https://mail.google.com/mail/?view=cm&fs=1&to=fahranpratama64@gmail.com&su=' . urlencode('Kontak dari Website Portfolio') . '&body=' . urlencode("Halo Farhan,\n\nSaya ingin berdiskusi mengenai proyek / kolaborasi.\n\nTerima kasih."),
                 'icon' => 'email',
             ],
         ],
