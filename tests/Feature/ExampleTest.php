@@ -22,6 +22,10 @@ class ExampleTest extends TestCase
         $response->assertSeeText('Keahlian & Perkakas');
         $response->assertSeeText('Proyek Pilihan');
         $response->assertSeeText('Aplikasi Monev Kinerja Guru');
+        $response->assertSeeText('Pengalaman Kerja');
+        $response->assertSeeText('Badan Pusat Statistik (BPS)');
+        $response->assertSeeText('Shopee Express');
+        $response->assertSeeText('UNDUH CV');
         $response->assertSeeText('Mari Terhubung & Berdiskusi');
     }
 

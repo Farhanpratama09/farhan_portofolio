@@ -11,7 +11,7 @@
 
             <!-- Kiri: Ajakan kolaborasi -->
             <div class="lg:col-span-5 space-y-5">
-                <p class="font-mono text-[11px] uppercase tracking-widest text-ink-soft">04 / Korespondensi</p>
+                <p class="font-mono text-[11px] uppercase tracking-widest text-ink-soft">05 / Korespondensi</p>
                 <h2 id="contact-title" class="font-display font-bold text-3xl sm:text-4xl tracking-tight">
                     Mari Terhubung &amp; Berdiskusi
                 </h2>

@@ -12,7 +12,10 @@
         <!-- D. Proyek Pilihan -->
         <x-projects :portfolio="$portfolio" />
 
-        <!-- E. Correspondence Desk -->
+        <!-- E. Riwayat Pengalaman Kerja -->
+        <x-experience :portfolio="$portfolio" />
+
+        <!-- F. Correspondence Desk -->
         <x-contact :portfolio="$portfolio" />
     </main>
 

@@ -105,6 +105,12 @@
                 <a href="#contact" class="press inline-flex items-center gap-2 px-5 py-2.5 bg-white border-2 border-ink shadow-hard font-display font-bold text-sm">
                     Hubungi Saya
                 </a>
+                @if (!empty($portfolio['cv_url'] ?? config('portfolio.cv_url')))
+                    <a href="{{ asset($portfolio['cv_url'] ?? config('portfolio.cv_url')) }}" download class="press inline-flex items-center gap-2 px-5 py-2.5 bg-paper-2 border-2 border-ink shadow-hard font-mono font-bold text-sm">
+                        <span>📄</span>
+                        <span>UNDUH CV</span>
+                    </a>
+                @endif
             </div>
 
             <!-- Fokus kerja (esensi About) -->

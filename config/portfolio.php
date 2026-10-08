@@ -27,6 +27,8 @@ return [
     'timezone' => 'Asia/Jakarta',
     'available' => true,
 
+    'cv_url' => '/files/cv.pdf',
+
     /*
     |--------------------------------------------------------------------------
     | Menu Navigasi
@@ -36,6 +38,7 @@ return [
         ['id' => 'hero', 'label' => 'Profil', 'url' => '#hero'],
         ['id' => 'skills', 'label' => 'Keahlian', 'url' => '#skills'],
         ['id' => 'projects', 'label' => 'Proyek', 'url' => '#projects'],
+        ['id' => 'experience', 'label' => 'Pengalaman', 'url' => '#experience'],
         ['id' => 'contact', 'label' => 'Kontak', 'url' => '#contact'],
     ],
 
@@ -52,7 +55,7 @@ return [
             'tags' => ['Laravel 13', 'MySQL', 'Metode BARS'],
             'description' => 'Aplikasi evaluasi dan monitoring kinerja guru berbasis web dengan implementasi metode Behaviorally Anchored Rating Scale (BARS).',
             'gradient' => 'from-sky-600 via-indigo-700 to-slate-900',
-            'github' => 'https://github.com/farhanpratama',
+            'github' => 'https://github.com/Farhanpratama09/penilaian.git',
             'demo' => '#',
         ],
         [
@@ -62,7 +65,7 @@ return [
             'tags' => ['Laravel 13', 'Tailwind CSS', 'Alpine.js'],
             'description' => 'Website portofolio pribadi bertema soft dashboard dengan mode gelap/terang dan arsitektur komponen Blade yang rapi.',
             'gradient' => 'from-indigo-600 via-sky-600 to-slate-900',
-            'github' => 'https://github.com/farhanpratama/webprofile-app',
+            'github' => 'https://github.com/Farhanpratama09/webprofile-app.git',
             'demo' => '#',
         ],
         [
@@ -115,6 +118,40 @@ return [
         ['code' => 'Tw', 'name' => 'Tailwind CSS', 'type' => 'Styling', 'accent' => 'citypop'],
         ['code' => 'Git', 'name' => 'Git', 'type' => 'Versi Kontrol', 'accent' => 'tangerine'],
         ['code' => 'Bs', 'name' => 'Algoritma BARS', 'type' => 'Metode', 'accent' => 'mint'],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Riwayat Pengalaman Kerja
+    |--------------------------------------------------------------------------
+    */
+    'experiences' => [
+        [
+            'role' => 'Petugas Pencacah Lapangan (Mitra BPS)',
+            'company' => 'Badan Pusat Statistik (BPS)',
+            'period' => '2026 · 2,5 Bulan',
+            'status' => 'Selesai',
+            'is_active' => false,
+            'desc' => 'Bertanggung jawab dalam pengumpulan, verifikasi, dan validasi data sensus ekonomi pelaku usaha di lapangan dengan kepatuhan metodologi ketat.',
+            'highlights' => [
+                'Melakukan pencacahan dan entri data puluhan pelaku usaha dengan akurasi tinggi.',
+                'Menjaga validitas dan konsistensi data sebelum diproses ke sistem pusat.',
+                'Berkomunikasi efektif dengan beragam karakter responden usaha.',
+            ],
+        ],
+        [
+            'role' => 'Daily Logistics Associate',
+            'company' => 'Shopee Express (DC Sungai Kakap)',
+            'period' => '1 Bulan',
+            'status' => 'Nonaktif',
+            'is_active' => false,
+            'desc' => 'Mengelola alur logistik pergudangan harian dalam lingkungan kerja bertempo cepat (fast-paced environment).',
+            'highlights' => [
+                'Melakukan sortir, scanning paket, dan alokasi muatan rute distribusi harian.',
+                'Menjaga ketelitian dan pemenuhan target volume logistik tanpa salah kirim.',
+                'Mendukung operasional bongkar muat kargo barang secara terorganisir.',
+            ],
+        ],
     ],
 
     /*
