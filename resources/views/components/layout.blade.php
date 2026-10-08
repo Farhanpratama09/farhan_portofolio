@@ -22,6 +22,7 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#FAF7F2">
     <link rel="canonical" href="{{ $canonical }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2338bdf8' stroke='%231E2229' stroke-width='2'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='900' font-size='14' fill='%231E2229'>FP</text></svg>">
 
     <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
     <meta property="og:type" content="website">
