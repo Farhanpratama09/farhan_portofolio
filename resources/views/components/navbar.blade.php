@@ -51,7 +51,7 @@
                 @foreach ($portfolio['nav'] as $item)
                     <a
                         href="{{ $item['url'] }}"
-                        @click="active = '{{ $item['id'] }}'"
+                        @click="active = '{{ $item['id'] }}'; if ({{ !empty($item['is_modal']) ? 'true' : 'false' }}) { $dispatch('open-exp-modal'); }"
                         :class="active === '{{ $item['id'] }}' ? 'bg-ink text-paper' : 'text-ink hover:bg-paper-2'"
                         :aria-current="active === '{{ $item['id'] }}' ? 'true' : null"
                         class="flex items-center px-4 border-l-2 border-ink last:border-r-2 font-mono text-[12px] uppercase tracking-wider transition-colors"
@@ -104,7 +104,7 @@
         @foreach ($portfolio['nav'] as $item)
             <a
                 href="{{ $item['url'] }}"
-                @click="open = false; active = '{{ $item['id'] }}'"
+                @click="open = false; active = '{{ $item['id'] }}'; if ({{ !empty($item['is_modal']) ? 'true' : 'false' }}) { $dispatch('open-exp-modal'); }"
                 :class="active === '{{ $item['id'] }}' ? 'bg-ink text-paper' : 'hover:bg-paper-2'"
                 class="flex items-center justify-between px-5 py-3 border-b border-ink/20 font-mono text-xs uppercase tracking-wider"
             >

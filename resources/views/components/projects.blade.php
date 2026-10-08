@@ -24,7 +24,21 @@
 >
     <header class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
         <div>
-            <p class="font-mono text-[11px] uppercase tracking-widest text-ink-soft">03 / Katalog</p>
+            <div class="flex flex-wrap items-center gap-2.5">
+                <p class="font-mono text-[11px] uppercase tracking-widest text-ink-soft">03 / Katalog</p>
+                <button
+                    type="button"
+                    @click="$dispatch('open-exp-modal')"
+                    class="press inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border-2 border-ink shadow-hard-sm font-mono text-[11px] font-bold text-ink cursor-pointer hover:bg-paper-2"
+                    title="Buka Jendela Riwayat Pengalaman"
+                >
+                    <span aria-hidden="true">💾</span>
+                    <span>[SIDE_QUEST_LOG.EXE]</span>
+                    <span class="px-1 py-0.2 bg-mint/40 border border-ink text-[9px] uppercase font-bold text-ink">
+                        [{{ count($portfolio['experiences'] ?? config('portfolio.experiences', [])) }} LOG TERSEDIA]
+                    </span>
+                </button>
+            </div>
             <h2 id="projects-title" class="mt-1 font-display font-bold text-3xl sm:text-4xl tracking-tight">Proyek Pilihan</h2>
         </div>
 

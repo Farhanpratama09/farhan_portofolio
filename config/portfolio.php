@@ -38,7 +38,7 @@ return [
         ['id' => 'hero', 'label' => 'Profil', 'url' => '#hero'],
         ['id' => 'skills', 'label' => 'Keahlian', 'url' => '#skills'],
         ['id' => 'projects', 'label' => 'Proyek', 'url' => '#projects'],
-        ['id' => 'experience', 'label' => 'Pengalaman', 'url' => '#experience'],
+        ['id' => 'experience', 'label' => 'Exp Log', 'url' => '#projects', 'is_modal' => true],
         ['id' => 'contact', 'label' => 'Kontak', 'url' => '#contact'],
     ],
 
