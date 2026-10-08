@@ -65,7 +65,7 @@ return [
             'tags' => ['Laravel 13', 'Tailwind CSS', 'Alpine.js'],
             'description' => 'Website portofolio pribadi bertema soft dashboard dengan mode gelap/terang dan arsitektur komponen Blade yang rapi.',
             'gradient' => 'from-indigo-600 via-sky-600 to-slate-900',
-            'github' => 'https://github.com/Farhanpratama09/webprofile-app.git',
+            'github' => 'https://github.com/Farhanpratama09/farhan_portofolio',
             'demo' => '#',
         ],
         [
