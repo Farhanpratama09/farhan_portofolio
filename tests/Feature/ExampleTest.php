@@ -87,4 +87,22 @@ class ExampleTest extends TestCase
         $response->assertSee('https://mail.google.com/mail/?view=cm', false);
         $response->assertSee('https://wa.me/628218919798?text=', false);
     }
+
+    public function test_sitemap_xml_returns_valid_content_type_and_urls(): void
+    {
+        $response = $this->get('/sitemap.xml');
+
+        $response->assertOk();
+        $response->assertHeader('Content-Type', 'application/xml; charset=utf-8');
+        $response->assertSee('https://farhanpratama-portfolio.vercel.app/', false);
+    }
+
+    public function test_robots_txt_returns_valid_content_type_and_sitemap_directive(): void
+    {
+        $response = $this->get('/robots.txt');
+
+        $response->assertOk();
+        $response->assertHeader('Content-Type', 'text/plain; charset=utf-8');
+        $response->assertSee('Sitemap: https://farhanpratama-portfolio.vercel.app/sitemap.xml', false);
+    }
 }
