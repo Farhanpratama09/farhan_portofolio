@@ -26,16 +26,40 @@
                     <!-- Area foto: ganti dengan file public/{{ $photoPath }} -->
                     <div class="relative aspect-[4/5] m-3 border-2 border-ink overflow-hidden bg-paper-2">
                         @if ($hasPhoto)
-                            <img
-                                src="{{ asset($photoPath) }}"
-                                alt="Foto profil {{ $portfolio['name'] }}, {{ $portfolio['role'] }}"
-                                width="640"
-                                height="800"
-                                fetchpriority="high"
-                                loading="eager"
-                                decoding="async"
-                                class="w-full h-full object-cover"
-                            >
+                            <picture>
+                                <source
+                                    type="image/webp"
+                                    media="(max-width: 640px)"
+                                    srcset="{{ asset('images/profile-mobile.webp') }}"
+                                    width="340"
+                                    height="510"
+                                >
+                                <source
+                                    type="image/jpeg"
+                                    media="(max-width: 640px)"
+                                    srcset="{{ asset('images/profile-mobile.jpg') }}"
+                                    width="340"
+                                    height="510"
+                                >
+                                <source
+                                    type="image/webp"
+                                    srcset="{{ asset('images/profile.webp') }}"
+                                    width="600"
+                                    height="900"
+                                >
+                                <img
+                                    src="{{ asset($photoPath) }}"
+                                    srcset="{{ asset('images/profile-mobile.jpg') }} 340w, {{ asset($photoPath) }} 600w"
+                                    sizes="(max-width: 640px) 340px, 400px"
+                                    alt="Foto profil {{ $portfolio['name'] }}, {{ $portfolio['role'] }}"
+                                    width="600"
+                                    height="900"
+                                    fetchpriority="high"
+                                    loading="eager"
+                                    decoding="async"
+                                    class="w-full h-full object-cover"
+                                >
+                            </picture>
                         @else
                             <div class="absolute inset-0 hatch"></div>
                             <div class="absolute inset-0 grid place-items-center">

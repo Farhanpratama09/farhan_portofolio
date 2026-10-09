@@ -22,5 +22,9 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('production') || isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
+
+        \Illuminate\Support\Facades\Vite::useScriptTagAttributes([
+            'defer' => true,
+        ]);
     }
 }
