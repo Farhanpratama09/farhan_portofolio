@@ -43,10 +43,20 @@
         <meta name="twitter:image" content="{{ $ogImage }}">
     @endif
 
-    <!-- Google Fonts: Space Grotesk (heading), DM Sans (paragraf), JetBrains Mono (label teknis) -->
+    <!-- Preload Hero Image for instant mobile & desktop LCP -->
+    @if ($photoPath && file_exists(public_path($photoPath)))
+        <link rel="preload" as="image" href="{{ asset('images/profile-mobile.webp') }}" type="image/webp" media="(max-width: 640px)" fetchpriority="high">
+        <link rel="preload" as="image" href="{{ asset('images/profile.webp') }}" type="image/webp" media="(min-width: 641px)" fetchpriority="high">
+    @endif
+
+    <!-- Google Fonts: Preconnect & Non-render-blocking font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    </noscript>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
