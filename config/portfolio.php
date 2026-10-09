@@ -166,7 +166,7 @@ return [
             ['name' => 'LinkedIn', 'url' => 'https://linkedin.com/in/farhanpratama', 'icon' => 'linkedin'],
             [
                 'name' => 'WhatsApp',
-                'url' => 'https://wa.me/628218919798?text=' . urlencode('Halo Farhan, saya ingin berdiskusi mengenai proyek atau kolaborasi. Terima kasih.'),
+                'url' => 'https://wa.me/628986776335?text=' . urlencode('Halo Farhan, saya ingin berdiskusi mengenai proyek atau kolaborasi. Terima kasih.'),
                 'icon' => 'whatsapp',
             ],
             [
