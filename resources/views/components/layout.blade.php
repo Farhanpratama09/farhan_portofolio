@@ -59,6 +59,21 @@
     </noscript>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        if (window.location.hash) {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+        window.scrollTo(0, 0);
+        window.addEventListener('DOMContentLoaded', function () {
+            window.scrollTo(0, 0);
+        });
+        window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+        });
+    </script>
 </head>
 <body class="paper-grid text-ink font-sans antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-citypop selection:text-ink">
 

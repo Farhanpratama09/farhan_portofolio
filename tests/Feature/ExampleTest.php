@@ -85,7 +85,7 @@ class ExampleTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('https://mail.google.com/mail/?view=cm', false);
-        $response->assertSee('https://wa.me/628218919798?text=', false);
+        $response->assertSee('https://wa.me/628986776335?text=', false);
     }
 
     public function test_sitemap_xml_returns_valid_content_type_and_urls(): void
