@@ -28,8 +28,12 @@
                         @if ($hasPhoto)
                             <img
                                 src="{{ asset($photoPath) }}"
-                                alt="Foto {{ $portfolio['name'] }}"
-                                width="640" height="800"
+                                alt="Foto profil {{ $portfolio['name'] }}, {{ $portfolio['role'] }}"
+                                width="640"
+                                height="800"
+                                fetchpriority="high"
+                                loading="eager"
+                                decoding="async"
                                 class="w-full h-full object-cover"
                             >
                         @else
@@ -106,8 +110,8 @@
                     Hubungi Saya
                 </a>
                 @if (!empty($portfolio['cv_url'] ?? config('portfolio.cv_url')))
-                    <a href="{{ asset($portfolio['cv_url'] ?? config('portfolio.cv_url')) }}" download="CV_FarhanPratama.pdf" class="press inline-flex items-center gap-2 px-5 py-2.5 bg-paper-2 border-2 border-ink shadow-hard font-mono font-bold text-sm">
-                        <span>📄</span>
+                    <a href="{{ asset($portfolio['cv_url'] ?? config('portfolio.cv_url')) }}" download="CV_FarhanPratama.pdf" aria-label="Unduh Curriculum Vitae Farhan Pratama (PDF)" class="press inline-flex items-center gap-2 px-5 py-2.5 bg-paper-2 border-2 border-ink shadow-hard font-mono font-bold text-sm">
+                        <span aria-hidden="true">📄</span>
                         <span>UNDUH CV</span>
                     </a>
                 @endif

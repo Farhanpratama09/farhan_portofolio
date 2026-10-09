@@ -113,6 +113,7 @@
                             x-cloak
                             x-transition
                             role="status" 
+                            aria-live="polite"
                             class="mb-4 flex gap-2 px-3 py-2.5 border-2 border-ink bg-mint/25 text-sm font-medium"
                         >
                             <span class="font-mono font-bold" aria-hidden="true">[OK]</span>
@@ -125,6 +126,7 @@
                             x-cloak
                             x-transition
                             role="alert" 
+                            aria-live="assertive"
                             class="mb-4 flex gap-2 px-3 py-2.5 border-2 border-ink bg-rose-100 text-sm font-medium"
                         >
                             <span class="font-mono font-bold" aria-hidden="true">[ERR]</span>
@@ -137,6 +139,7 @@
                             x-cloak
                             x-transition
                             role="alert" 
+                            aria-live="assertive"
                             class="mb-4 px-3 py-2.5 border-2 border-ink bg-tangerine/20 text-sm"
                         >
                             <p class="font-mono font-bold text-[11px] uppercase tracking-wider mb-1">[!] Periksa kembali isian:</p>

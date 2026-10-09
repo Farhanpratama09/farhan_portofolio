@@ -30,6 +30,7 @@
                     type="button"
                     @click="$dispatch('open-exp-modal')"
                     class="press inline-flex items-center gap-1.5 px-2.5 py-1 bg-white border-2 border-ink shadow-hard-sm font-mono text-[11px] font-bold text-ink cursor-pointer hover:bg-paper-2"
+                    aria-label="Buka riwayat pengalaman kerja"
                     title="Buka Jendela Riwayat Pengalaman"
                 >
                     <span aria-hidden="true">💾</span>

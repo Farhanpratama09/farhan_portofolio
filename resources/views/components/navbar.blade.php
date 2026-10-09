@@ -81,7 +81,7 @@
                     @click="open = !open"
                     :aria-expanded="open.toString()"
                     aria-controls="mobile-nav"
-                    aria-label="Buka menu"
+                    :aria-label="open ? 'Tutup menu navigasi' : 'Buka menu navigasi'"
                     class="md:hidden grid place-items-center w-9 h-9 border-2 border-ink bg-white shadow-hard-sm press"
                 >
                     <svg x-show="!open" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="square" d="M4 7h16M4 12h16M4 17h16"/></svg>
